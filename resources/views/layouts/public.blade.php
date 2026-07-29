@@ -6,82 +6,116 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'OtoRent') — Solusi Rental Mobil Terpercaya</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=noto-serif:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        :root {
+            --color-primary: #022448;
+            --color-on-primary: #ffffff;
+            --color-primary-container: #1e3a5f;
+            --color-on-primary-container: #8aa4cf;
+            --color-primary-fixed: #d5e3ff;
+            --color-primary-fixed-dim: #adc8f5;
+            --color-on-primary-fixed: #001c3b;
+            --color-on-primary-fixed-variant: #2d486d;
+            --color-primary-50: #eef4ff;
+            --color-primary-100: #dae6ff;
+            --color-primary-200: #bccdfe;
+            --color-primary-300: #8eabfc;
+            --color-primary-400: #5a83f5;
+            --color-primary-500: #305ee0;
+            --color-primary-600: #1a44c5;
+            --color-primary-700: #0a2b8a;
+            --color-primary-800: #022448;
+            --color-primary-900: #001c3b;
+            --color-primary-950: #000e1d;
+            --color-secondary: #855300;
+            --color-on-secondary: #ffffff;
+            --color-secondary-container: #fea619;
+            --color-on-secondary-container: #684000;
+            --color-secondary-fixed: #ffddb8;
+            --color-secondary-fixed-dim: #ffb95f;
+            --color-on-secondary-fixed: #2a1700;
+            --color-on-secondary-fixed-variant: #653e00;
+            --color-accent-50: #fffbeb;
+            --color-accent-100: #fef3c7;
+            --color-accent-200: #fde68a;
+            --color-accent-300: #fcd34d;
+            --color-accent-400: #fbbf24;
+            --color-accent-500: #fea619;
+            --color-accent-600: #d97706;
+            --color-accent-700: #b45309;
+            --color-tertiary: #18233b;
+            --color-on-tertiary: #ffffff;
+            --color-tertiary-container: #2e3952;
+            --color-on-tertiary-container: #98a3c0;
+            --color-tertiary-fixed: #d8e2ff;
+            --color-tertiary-fixed-dim: #bbc6e5;
+            --color-background: #f7f9fb;
+            --color-on-background: #191c1e;
+            --color-surface: #f7f9fb;
+            --color-on-surface: #191c1e;
+            --color-surface-dim: #d8dadc;
+            --color-surface-bright: #f7f9fb;
+            --color-surface-container-lowest: #ffffff;
+            --color-surface-container-low: #f2f4f6;
+            --color-surface-container: #eceef0;
+            --color-surface-container-high: #e6e8ea;
+            --color-surface-container-highest: #e0e3e5;
+            --color-surface-variant: #e0e3e5;
+            --color-on-surface-variant: #43474e;
+            --color-outline: #74777f;
+            --color-outline-variant: #c4c6cf;
+            --color-inverse-surface: #2d3133;
+            --color-inverse-on-surface: #eff1f3;
+            --color-inverse-primary: #adc8f5;
+            --color-surface-tint: #455f87;
+            --color-surface-subtle: #eff6ff;
+            --color-status-success: #22c55e;
+            --color-status-warning: #f59e0b;
+            --color-status-danger: #ef4444;
+            --color-status-info: #3b82f6;
+        }
+    </style>
 </head>
-<body class="font-sans antialiased text-gray-900">
+<body class="bg-background text-on-background font-sans antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-            <div class="flex items-center gap-8">
-                <a href="{{ route('landing') }}" class="text-xl font-bold tracking-tight">
-                    <span class="text-primary-500">Oto</span><span class="text-accent-500">Rent</span>
-                </a>
-                <div class="hidden sm:flex items-center gap-6">
-                    <a href="{{ route('landing') }}" class="text-sm font-medium {{ request()->routeIs('landing') ? 'text-primary-500' : 'text-gray-600 hover:text-gray-900' }}">
-                        Beranda
-                    </a>
-                    <a href="{{ route('kendaraan.index') }}" class="text-sm font-medium {{ request()->routeIs('kendaraan.*') ? 'text-primary-500' : 'text-gray-600 hover:text-gray-900' }}">
-                        Kendaraan
-                    </a>
-                </div>
+<nav class="fixed top-0 w-full z-50 bg-surface shadow-sm transition-all duration-300 ease-out h-20" id="main-nav">
+    <div class="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+        <div class="flex items-center gap-8">
+            <a href="{{ route('landing') }}" class="font-bold text-xl sm:text-2xl tracking-tighter text-primary">
+                Oto<span class="text-secondary-container">Rent</span>
+            </a>
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="{{ route('landing') }}" class="font-body-md text-body-md {{ request()->routeIs('landing') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Beranda</a>
+                <a href="{{ route('kendaraan.index') }}" class="font-body-md text-body-md {{ request()->routeIs('kendaraan.*') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Kendaraan</a>
+                <a href="#" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Layanan</a>
+                <a href="#" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Kontak</a>
             </div>
-            <div class="hidden sm:flex items-center gap-4">
-                @auth
-                    <form method="POST" action="/logout">
-                        @csrf
-                        <button type="submit" class="text-sm font-medium text-gray-600 hover:text-gray-900">
-                            Logout
-                        </button>
-                    </form>
-                    <a href="{{ auth()->user()->role->value === 'admin' || auth()->user()->role->value === 'staff' ? route('admin.dashboard') : route('customer.dashboard') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-lg hover:bg-primary-600 transition">
-                        Dashboard
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-gray-600 hover:text-gray-900">
-                        Login
-                    </a>
-                    <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-accent-500 rounded-lg hover:bg-accent-600 transition">
-                        Daftar
-                    </a>
-                @endauth
-            </div>
-            <button @click="open = ! open" class="sm:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{'hidden': open, 'inline-flex': ! open}" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! open, 'inline-flex': open}" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
         </div>
-    </div>
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden border-t border-gray-100">
-        <div class="px-4 py-3 space-y-2">
-            <a href="{{ route('landing') }}" class="block px-3 py-2 text-sm font-medium rounded-md {{ request()->routeIs('landing') ? 'text-primary-500 bg-primary-50' : 'text-gray-600 hover:text-gray-900' }}">
-                Beranda
-            </a>
-            <a href="{{ route('kendaraan.index') }}" class="block px-3 py-2 text-sm font-medium rounded-md {{ request()->routeIs('kendaraan.*') ? 'text-primary-500 bg-primary-50' : 'text-gray-600 hover:text-gray-900' }}">
-                Kendaraan
-            </a>
-            <hr class="my-2">
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-2 gap-2">
+                <span class="material-symbols-outlined text-outline">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-sm w-32 outline-none text-on-surface placeholder:text-outline" placeholder="Cari mobil..." type="text">
+            </div>
+            <button class="material-symbols-outlined p-2 text-surface hover:bg-surface-container rounded-full transition-all hidden sm:block">notifications</button>
             @auth
-                <a href="{{ auth()->user()->role->value === 'admin' || auth()->user()->role->value === 'staff' ? route('admin.dashboard') : route('customer.dashboard') }}" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md">
-                    Dashboard
-                </a>
-                <form method="POST" action="{{ route('logout') }}">
+                <a href="{{ auth()->user()->role->value === 'admin' || auth()->user()->role->value === 'staff' ? route('admin.dashboard') : route('customer.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container hover:shadow-md transition-all hidden sm:block">Dashboard</a>
+                <form method="POST" action="/logout" class="hidden sm:block">
                     @csrf
-                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md">
-                        Logout
-                    </button>
+                    <button type="submit" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Logout</button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="block px-3 py-2 text-sm font-medium text-accent-600 hover:text-accent-700 rounded-md">
-                    Daftar
-                </a>
+                <a href="{{ route('login') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container hover:shadow-md transition-all hidden sm:block">Masuk</a>
+                <a href="{{ route('register') }}" class="text-sm font-medium text-on-surface hover:text-primary transition-colors hidden sm:block">Daftar</a>
             @endauth
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-surface hover:bg-surface-container">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
     </div>
 </nav>
@@ -90,43 +124,73 @@
     @yield('content')
 </main>
 
-<footer class="bg-primary-500 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-3"><span class="text-white">Oto</span><span class="text-accent-500">Rent</span></h3>
-                <p class="text-sm text-primary-200 leading-relaxed">
-                    Solusi rental mobil terpercaya untuk perjalanan Anda. Mudah, cepat, dan terjangkau.
-                </p>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-primary-200">Kontak</h4>
-                <ul class="space-y-2 text-sm text-primary-100">
-                    <li>Jl. Merdeka No. 123, Jakarta</li>
-                    <li>021-12345678</li>
-                    <li>info@otorent.id</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-primary-200">Menu</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('landing') }}" class="text-primary-100 hover:text-white transition">Beranda</a></li>
-                    <li><a href="{{ route('kendaraan.index') }}" class="text-primary-100 hover:text-white transition">Kendaraan</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-primary-200">Jam Operasional</h4>
-                <ul class="space-y-2 text-sm text-primary-100">
-                    <li>Senin - Sabtu: 08:00 - 20:00</li>
-                    <li>Minggu: 09:00 - 17:00</li>
-                </ul>
+<footer class="w-full py-16 px-4 sm:px-6 lg:px-8 mt-auto bg-primary text-on-primary">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto">
+        <div class="space-y-6">
+            <span class="font-headline-md text-headline-md text-on-primary font-black tracking-tighter">OtoRent</span>
+            <p class="text-on-primary/70 font-body-md text-body-md pr-4">
+                Penyedia layanan sewa mobil premium nomor satu di Indonesia. Mewah, terpercaya, dan profesional.
+            </p>
+            <div class="flex gap-4">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-[20px]">public</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-[20px]">mail</span>
+                </a>
             </div>
         </div>
-        <div class="border-t border-primary-400 mt-8 pt-6 text-center text-sm text-primary-200">
-            &copy; {{ date('Y') }} OtoRent. All rights reserved.
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Layanan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Harian</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Bulanan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Layanan Chauffeur</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Korporat</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Perusahaan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Tentang Kami</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Lokasi</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Karir</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="#">Blog</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Berlangganan</h5>
+            <p class="text-on-primary/70 text-sm">Dapatkan penawaran eksklusif langsung di email Anda.</p>
+            <div class="flex flex-col gap-3">
+                <input class="bg-white/10 border-white/20 rounded-xl px-4 py-3 focus:ring-secondary-container outline-none placeholder:text-white/30 text-white" placeholder="Email Anda" type="email">
+                <button class="bg-secondary-container text-on-secondary-fixed py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">Daftar Sekarang</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-[1280px] mx-auto pt-16 mt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-on-primary/50 text-sm">&copy; {{ date('Y') }} OtoRent. All rights reserved.</p>
+        <div class="flex gap-8 text-sm text-on-primary/50">
+            <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+            <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+            <a class="hover:text-white transition-colors" href="#">Cookie Policy</a>
         </div>
     </div>
 </footer>
 
+<script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            nav.classList.add('h-16', 'shadow-md');
+            nav.classList.remove('h-20', 'shadow-sm');
+        } else {
+            nav.classList.add('h-20', 'shadow-sm');
+            nav.classList.remove('h-16', 'shadow-md');
+        }
+    });
+</script>
 </body>
 </html>

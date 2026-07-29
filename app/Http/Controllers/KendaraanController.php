@@ -10,7 +10,7 @@ class KendaraanController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Kendaraan::where('status', 'tersedia');
+        $query = Kendaraan::query();
 
         if ($request->filled('search')) {
             $query->where('nama_kendaraan', 'like', '%' . $request->search . '%');
@@ -20,7 +20,15 @@ class KendaraanController extends Controller
             $query->where('jenis', $request->jenis);
         }
 
-        $kendaraans = $query->latest()->paginate(12)->withQueryString();
+        $sort = $request->get('sort', 'terbaru');
+        $sortOrder = match ($sort) {
+            'harga_terendah' => ['harga_sewa_per_hari', 'asc'],
+            'harga_tertinggi' => ['harga_sewa_per_hari', 'desc'],
+            default => ['created_at', 'desc'],
+        };
+        $query->orderBy($sortOrder[0], $sortOrder[1]);
+
+        $kendaraans = $query->paginate(12)->withQueryString();
         $jenisList = JenisKendaraan::cases();
 
         return view('kendaraan.index', compact('kendaraans', 'jenisList'));

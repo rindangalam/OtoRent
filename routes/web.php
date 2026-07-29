@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Customer\DashboardController;
 use App\Http\Controllers\Customer\BookingController;
 use App\Http\Controllers\Customer\PembayaranController;
@@ -20,6 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.index');
 Route::get('/kendaraan/{kendaraan}', [KendaraanController::class, 'show'])->name('kendaraan.show');
+
+// Profile routes (Breeze compatibility)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // Customer routes
 Route::middleware(['auth', 'role:customer'])->group(function () {

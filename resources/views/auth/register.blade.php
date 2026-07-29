@@ -1,86 +1,75 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Register — OtoRent</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-sans antialiased bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center p-4">
+@extends('layouts.guest')
 
-<div class="w-full max-w-md">
-    <div class="text-center mb-8">
-        <a href="{{ route('landing') }}" class="text-3xl font-extrabold tracking-tight">
-            <span class="text-primary-500">Oto</span><span class="text-accent-500">Rent</span>
-        </a>
-        <p class="mt-2 text-sm text-gray-500">Buat akun baru Anda</p>
+@section('title', 'Daftar — OtoRent')
+
+@section('content')
+<header class="mb-8">
+    <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Buat Akun Baru</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">Isi data diri Anda untuk memulai.</p>
+</header>
+
+<form method="POST" action="{{ route('register') }}" class="space-y-6">
+    @csrf
+
+    <div class="space-y-2">
+        <label class="block font-label-md text-label-md text-on-surface" for="name">Nama Lengkap</label>
+        <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
+            class="block w-full bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 px-4 py-3"
+            placeholder="Nama lengkap Anda">
+        @error('name')
+            <p class="text-sm text-status-danger mt-1">{{ $message }}</p>
+        @enderror
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-8">
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
-                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm">
-                @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mt-5">
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
-                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm">
-                @error('email')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mt-5">
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
-                <input id="phone" type="tel" name="phone" value="{{ old('phone') }}" autocomplete="tel"
-                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm">
-                @error('phone')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mt-5">
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input id="password" type="password" name="password" required autocomplete="new-password"
-                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm">
-                @error('password')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mt-5">
-                <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
-                <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
-                    class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm">
-                @error('password_confirmation')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mt-6">
-                <button type="submit" class="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-white bg-accent-500 rounded-lg hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition">
-                    Register
-                </button>
-            </div>
-        </form>
-
-        <p class="mt-6 text-center text-sm text-gray-500">
-            Sudah punya akun?
-            <a href="{{ route('login') }}" class="font-medium text-primary-500 hover:text-primary-600">Login</a>
-        </p>
+    <div class="space-y-2">
+        <label class="block font-label-md text-label-md text-on-surface" for="email">Email</label>
+        <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
+            class="block w-full bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 px-4 py-3"
+            placeholder="nama@email.com">
+        @error('email')
+            <p class="text-sm text-status-danger mt-1">{{ $message }}</p>
+        @enderror
     </div>
+
+    <div class="space-y-2">
+        <label class="block font-label-md text-label-md text-on-surface" for="phone">Nomor Telepon</label>
+        <input id="phone" type="tel" name="phone" value="{{ old('phone') }}" autocomplete="tel"
+            class="block w-full bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 px-4 py-3"
+            placeholder="08xxxxxxxxxx">
+        @error('phone')
+            <p class="text-sm text-status-danger mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div class="space-y-2">
+        <label class="block font-label-md text-label-md text-on-surface" for="password">Password</label>
+        <input id="password" type="password" name="password" required autocomplete="new-password"
+            class="block w-full bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 px-4 py-3"
+            placeholder="Min. 8 karakter">
+        @error('password')
+            <p class="text-sm text-status-danger mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div class="space-y-2">
+        <label class="block font-label-md text-label-md text-on-surface" for="password_confirmation">Konfirmasi Password</label>
+        <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
+            class="block w-full bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-200 px-4 py-3"
+            placeholder="Ulangi password">
+        @error('password_confirmation')
+            <p class="text-sm text-status-danger mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <button type="submit" class="w-full py-4 px-6 bg-secondary-container text-on-secondary-container font-bold rounded-lg shadow-sm hover:shadow-md hover:bg-secondary-container/90 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] focus:ring-4 focus:ring-secondary-container/30">
+        Daftar Sekarang
+    </button>
+</form>
+
+<div class="mt-10 text-center pt-8 border-t border-outline-variant/30">
+    <p class="font-body-md text-body-md text-on-surface-variant">
+        Sudah punya akun?
+        <a class="font-bold text-primary hover:text-primary-container transition-colors" href="{{ route('login') }}">Masuk</a>
+    </p>
 </div>
-
-</body>
-</html>
+@endsection
