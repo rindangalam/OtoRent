@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+    .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.05s; }
+    .stagger-2 { animation-delay: 0.1s; }
+    .stagger-3 { animation-delay: 0.15s; }
+</style>
 <div class="max-w-4xl space-y-6">
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 fade-in stagger-1">
         <a href="{{ route('admin.booking.index') }}" class="text-on-surface-variant hover:text-on-surface transition">
             <span class="material-symbols-outlined text-[24px]">arrow_back</span>
         </a>
@@ -21,8 +28,7 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {{-- Info Booking --}}
-        <div class="lg:col-span-2 space-y-6">
+        <div class="lg:col-span-2 space-y-6 fade-in stagger-2">
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Informasi Booking</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -97,7 +103,6 @@
                 </div>
             </div>
 
-            {{-- Ringkasan Biaya --}}
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Ringkasan Biaya</h2>
                 <div class="space-y-3">
@@ -125,18 +130,15 @@
             </div>
         </div>
 
-        {{-- Sidebar --}}
-        <div class="space-y-6">
-            {{-- Status Management --}}
+        <div class="space-y-6 fade-in stagger-3">
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Ubah Status</h2>
                 <div class="space-y-3">
                     @if($booking->status->value === 'pending')
                         <form method="POST" action="{{ route('admin.booking.updateStatus', $booking) }}">
-                            @csrf
-                            @method('PUT')
+                            @csrf @method('PUT')
                             <input type="hidden" name="status" value="confirmed">
-                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-info text-on-primary text-label-md rounded-xl transition">
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-info text-on-primary text-label-md rounded-xl hover:opacity-90 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">check</span>
                                 Konfirmasi Booking
                             </button>
@@ -145,10 +147,9 @@
 
                     @if($booking->status->value === 'confirmed')
                         <form method="POST" action="{{ route('admin.booking.updateStatus', $booking) }}">
-                            @csrf
-                            @method('PUT')
+                            @csrf @method('PUT')
                             <input type="hidden" name="status" value="ongoing">
-                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-info text-on-primary text-label-md rounded-xl transition">
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-info text-on-primary text-label-md rounded-xl hover:opacity-90 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
                                 Mulai Sewa
                             </button>
@@ -157,10 +158,9 @@
 
                     @if($booking->status->value === 'ongoing')
                         <form method="POST" action="{{ route('admin.booking.updateStatus', $booking) }}">
-                            @csrf
-                            @method('PUT')
+                            @csrf @method('PUT')
                             <input type="hidden" name="status" value="completed">
-                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-success text-on-primary text-label-md rounded-xl transition">
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-success text-on-primary text-label-md rounded-xl hover:opacity-90 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">check_circle</span>
                                 Selesaikan
                             </button>
@@ -169,10 +169,9 @@
 
                     @if(!in_array($booking->status->value, ['completed', 'cancelled']))
                         <form method="POST" action="{{ route('admin.booking.updateStatus', $booking) }}" onsubmit="return confirm('Yakin ingin membatalkan booking ini?')">
-                            @csrf
-                            @method('PUT')
+                            @csrf @method('PUT')
                             <input type="hidden" name="status" value="cancelled">
-                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-container border border-outline-variant/20 text-status-danger text-label-md rounded-xl transition">
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-container border border-outline-variant/20 text-status-danger text-label-md rounded-xl hover:bg-status-danger/10 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">close</span>
                                 Batalkan
                             </button>
@@ -185,7 +184,6 @@
                 </div>
             </div>
 
-            {{-- Pembayaran --}}
             @if($booking->pembayaran)
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Pembayaran</h2>

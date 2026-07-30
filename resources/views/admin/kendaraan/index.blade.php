@@ -1,46 +1,50 @@
 @extends('layouts.admin')
 @section('content')
-<div class="space-y-6">
+<style>
+    .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.05s; }
+    .stagger-2 { animation-delay: 0.1s; }
+</style>
+<div class="space-y-6 fade-in stagger-1">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 class="text-headline-md text-on-surface">Kendaraan</h1>
-        <a href="{{ route('admin.kendaraan.create') }}" class="inline-flex items-center gap-2 px-4 py-2.5 bg-secondary-container text-on-secondary-container text-label-md rounded-xl transition">
+        <a href="{{ route('admin.kendaraan.create') }}" class="inline-flex items-center gap-2 px-4 py-2.5 bg-secondary-container text-on-secondary-container text-label-md rounded-xl hover:opacity-90 transition-all">
             <span class="material-symbols-outlined text-[18px]">add</span>
             Tambah Baru
         </a>
     </div>
 
-    {{-- Search & Filter --}}
-    <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-4">
+    <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-4 fade-in stagger-2">
         <form method="GET" action="{{ route('admin.kendaraan.index') }}" class="flex flex-col sm:flex-row gap-3">
             <div class="flex-1">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau plat nomor..."
-                    class="w-full px-4 py-2.5 border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md outline-none transition">
+                    class="w-full px-4 py-2.5 border border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition">
             </div>
             <div class="sm:w-48">
-                <select name="jenis" class="w-full px-4 py-2.5 border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md outline-none transition bg-surface-container-lowest">
+                <select name="jenis" class="w-full px-4 py-2.5 border border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition">
                     <option value="">Semua Jenis</option>
                     @foreach(\App\Enums\JenisKendaraan::cases() as $jenis)
                         <option value="{{ $jenis->value }}" {{ request('jenis') === $jenis->value ? 'selected' : '' }}>{{ $jenis->label() }}</option>
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="px-4 py-2.5 bg-surface-container text-on-surface-variant text-label-md rounded-xl transition">Cari</button>
+            <button type="submit" class="px-4 py-2.5 bg-secondary-container text-on-secondary-container text-label-md rounded-xl hover:opacity-90 transition-all">Cari</button>
         </form>
     </div>
 
-    {{-- Table --}}
     <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20">
         <div class="overflow-x-auto">
             @if($kendaraans->isEmpty())
                 <div class="p-12 text-center">
                     <span class="material-symbols-outlined text-6xl text-outline-variant/50 mx-auto mb-4 block">directions_car</span>
-                    <h3 class="text-label-lg text-on-surface-variant mb-1">Belum ada kendaraan</h3>
+                    <h3 class="font-bold text-on-surface-variant mb-1">Belum ada kendaraan</h3>
                     <p class="text-body-md text-on-surface-variant">Mulai tambahkan kendaraan baru untuk disewakan.</p>
                 </div>
             @else
                 <table class="w-full">
                     <thead>
-                        <tr class="text-left text-caption-caps text-on-surface-variant bg-surface-container-low">
+                        <tr class="text-left text-caption-caps text-on-surface-variant uppercase tracking-wider bg-surface-container-low">
                             <th class="px-6 py-3">#</th>
                             <th class="px-6 py-3">Nama</th>
                             <th class="px-6 py-3">Plat</th>
@@ -52,7 +56,7 @@
                     </thead>
                     <tbody class="divide-y divide-outline-variant/10">
                         @foreach($kendaraans as $kendaraan)
-                        <tr class="hover:bg-surface-container/50">
+                        <tr class="hover:bg-surface-container/50 transition-colors duration-150">
                             <td class="px-6 py-3 text-body-md text-on-surface-variant">{{ ($kendaraans->currentPage() - 1) * $kendaraans->perPage() + $loop->iteration }}</td>
                             <td class="px-6 py-3">
                                 <div class="flex items-center gap-3">
@@ -91,8 +95,7 @@
                                         <span class="material-symbols-outlined text-[20px]">edit</span>
                                     </a>
                                     <form action="{{ route('admin.kendaraan.destroy', $kendaraan) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus kendaraan ini?')">
-                                        @csrf
-                                        @method('DELETE')
+                                        @csrf @method('DELETE')
                                         <button type="submit" class="p-2 text-on-surface-variant hover:text-status-danger hover:bg-status-danger/10 rounded-xl transition" title="Hapus">
                                             <span class="material-symbols-outlined text-[20px]">delete</span>
                                         </button>

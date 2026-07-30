@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+    .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.05s; }
+    .stagger-2 { animation-delay: 0.1s; }
+    .stagger-3 { animation-delay: 0.15s; }
+</style>
 <div class="max-w-4xl space-y-6">
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 fade-in stagger-1">
         <a href="{{ route('admin.pembayaran.index') }}" class="text-on-surface-variant hover:text-on-surface transition">
             <span class="material-symbols-outlined text-[24px]">arrow_back</span>
         </a>
@@ -9,8 +16,7 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {{-- Info Pembayaran --}}
-        <div class="lg:col-span-2 space-y-6">
+        <div class="lg:col-span-2 space-y-6 fade-in stagger-2">
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Informasi Pembayaran</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -53,7 +59,6 @@
                 </div>
             </div>
 
-            {{-- Bukti Bayar --}}
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Bukti Bayar</h2>
                 @if($pembayaran->bukti_bayar)
@@ -68,7 +73,6 @@
                 @endif
             </div>
 
-            {{-- Catatan Admin --}}
             @if($pembayaran->catatan_admin)
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-2">Catatan Admin</h2>
@@ -77,37 +81,34 @@
             @endif
         </div>
 
-        {{-- Sidebar Aksi --}}
-        <div class="space-y-6">
+        <div class="space-y-6 fade-in stagger-3">
             @if($pembayaran->status->value === 'menunggu_verifikasi')
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6">
                 <h2 class="text-label-lg text-on-surface mb-4">Verifikasi Pembayaran</h2>
                 <div class="space-y-3">
                     <form method="POST" action="{{ route('admin.pembayaran.verifikasi', $pembayaran) }}">
-                        @csrf
-                        @method('PUT')
+                        @csrf @method('PUT')
                         <textarea name="catatan_admin" rows="2" placeholder="Catatan admin (opsional)..."
-                            class="w-full px-3 py-2 border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md outline-none transition mb-3"></textarea>
-                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-success text-on-primary text-label-md rounded-xl transition">
+                            class="w-full px-3 py-2 border border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition mb-3"></textarea>
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-status-success text-on-primary text-label-md rounded-xl hover:opacity-90 transition-all">
                             <span class="material-symbols-outlined text-[18px]">check</span>
                             Verifikasi
                         </button>
                     </form>
 
                     <div x-data="{ showReject: false }">
-                        <button @click="showReject = !showReject" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-container border border-outline-variant/20 text-status-danger text-label-md rounded-xl transition">
+                        <button @click="showReject = !showReject" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-container border border-outline-variant/20 text-status-danger text-label-md rounded-xl hover:bg-status-danger/10 transition-all">
                             <span class="material-symbols-outlined text-[18px]">close</span>
                             Tolak
                         </button>
 
                         <div x-show="showReject" x-transition x-cloak class="mt-3">
                             <form method="POST" action="{{ route('admin.pembayaran.tolak', $pembayaran) }}">
-                                @csrf
-                                @method('PUT')
+                                @csrf @method('PUT')
                                 <textarea name="catatan_admin" rows="3" required placeholder="Alasan penolakan..."
-                                    class="w-full px-4 py-2.5 border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md outline-none transition mb-3"></textarea>
+                                    class="w-full px-4 py-2.5 border border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition mb-3"></textarea>
                                 @error('catatan_admin') <p class="mt-1 text-sm text-status-danger">{{ $message }}</p> @enderror
-                                <button type="submit" class="w-full px-4 py-2.5 bg-status-danger text-on-primary text-label-md rounded-xl transition" onclick="return confirm('Yakin ingin menolak pembayaran ini?')">
+                                <button type="submit" class="w-full px-4 py-2.5 bg-status-danger text-on-primary text-label-md rounded-xl hover:opacity-90 transition-all" onclick="return confirm('Yakin ingin menolak pembayaran ini?')">
                                     Konfirmasi Penolakan
                                 </button>
                             </form>

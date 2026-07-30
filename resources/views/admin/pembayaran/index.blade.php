@@ -1,36 +1,40 @@
 @extends('layouts.admin')
 @section('content')
-<div class="space-y-6">
+<style>
+    .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.05s; }
+    .stagger-2 { animation-delay: 0.1s; }
+</style>
+<div class="space-y-6 fade-in stagger-1">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 class="text-headline-md text-on-surface">Pembayaran</h1>
     </div>
 
-    {{-- Filter --}}
-    <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-4">
+    <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-4 fade-in stagger-2">
         <form method="GET" action="{{ route('admin.pembayaran.index') }}" class="flex flex-col sm:flex-row gap-3">
-            <select name="status" class="sm:w-48 px-4 py-2.5 border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition">
+            <select name="status" class="sm:w-48 px-4 py-2.5 border border-outline-variant/30 focus:ring-2 focus:ring-primary/20 rounded-xl text-body-md bg-surface-container-lowest outline-none transition">
                 <option value="">Semua Status</option>
                 @foreach(\App\Enums\StatusPembayaran::cases() as $status)
                     <option value="{{ $status->value }}" {{ request('status') === $status->value ? 'selected' : '' }}>{{ $status->label() }}</option>
                 @endforeach
             </select>
-            <button type="submit" class="px-4 py-2.5 bg-surface-container text-on-surface-variant text-label-md rounded-xl transition">Filter</button>
+            <button type="submit" class="px-4 py-2.5 bg-secondary-container text-on-secondary-container text-label-md rounded-xl hover:opacity-90 transition-all">Filter</button>
         </form>
     </div>
 
-    {{-- Table --}}
     <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20">
         <div class="overflow-x-auto">
             @if($pembayarans->isEmpty())
                 <div class="p-12 text-center">
                     <span class="material-symbols-outlined text-6xl text-outline-variant/50 mx-auto mb-4 block">payments</span>
-                    <h3 class="text-label-lg text-on-surface-variant mb-1">Belum ada pembayaran</h3>
+                    <h3 class="font-bold text-on-surface-variant mb-1">Belum ada pembayaran</h3>
                     <p class="text-body-md text-on-surface-variant">Pembayaran akan muncul setelah customer mengirim bukti bayar.</p>
                 </div>
             @else
                 <table class="w-full">
                     <thead>
-                        <tr class="text-left text-caption-caps text-on-surface-variant bg-surface-container-low">
+                        <tr class="text-left text-caption-caps text-on-surface-variant uppercase tracking-wider bg-surface-container-low">
                             <th class="px-6 py-3">#</th>
                             <th class="px-6 py-3">Booking</th>
                             <th class="px-6 py-3">Customer</th>
@@ -43,7 +47,7 @@
                     </thead>
                     <tbody class="divide-y divide-outline-variant/10">
                         @foreach($pembayarans as $pembayaran)
-                        <tr class="hover:bg-surface-container/50">
+                        <tr class="hover:bg-surface-container/50 transition-colors duration-150">
                             <td class="px-6 py-3 text-body-md text-on-surface-variant">#{{ str_pad($pembayaran->id, 5, '0', STR_PAD_LEFT) }}</td>
                             <td class="px-6 py-3 text-body-md text-on-surface-variant">#{{ str_pad($pembayaran->booking_id, 5, '0', STR_PAD_LEFT) }}</td>
                             <td class="px-6 py-3 text-body-md font-medium text-on-surface">{{ $pembayaran->booking->user->name ?? '-' }}</td>

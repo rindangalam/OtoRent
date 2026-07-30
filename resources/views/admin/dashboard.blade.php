@@ -3,10 +3,31 @@
 @section('title', 'Dashboard')
 
 @section('content')
+<style>
+    .dash-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dash-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px -6px rgba(2, 36, 72, 0.1);
+    }
+    .fade-in {
+        opacity: 0;
+        animation: fadeSlideIn 0.5s ease-out forwards;
+    }
+    @keyframes fadeSlideIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .stagger-1 { animation-delay: 0.05s; }
+    .stagger-2 { animation-delay: 0.1s; }
+    .stagger-3 { animation-delay: 0.15s; }
+    .stagger-4 { animation-delay: 0.2s; }
+</style>
+
 <div class="space-y-6">
-    {{-- Stat Cards --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+        <div class="dash-card bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 fade-in stagger-1">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-on-surface-variant">Total Kendaraan</p>
@@ -18,7 +39,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+        <div class="dash-card bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 fade-in stagger-2">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-on-surface-variant">Booking Aktif</p>
@@ -30,7 +51,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+        <div class="dash-card bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 fade-in stagger-3">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-on-surface-variant">Pendapatan Bulan Ini</p>
@@ -42,7 +63,7 @@
             </div>
         </div>
 
-        <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+        <div class="dash-card bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 fade-in stagger-4">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-on-surface-variant">Service Pending</p>
@@ -56,21 +77,21 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {{-- Recent Bookings --}}
-        <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20">
+        <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 fade-in stagger-3">
             <div class="px-6 py-4 border-b border-outline-variant/20 flex justify-between items-center">
-                <h2 class="text-headline-md text-headline-md text-primary">Booking Terbaru</h2>
+                <h2 class="font-headline-md text-headline-md text-primary">Booking Terbaru</h2>
+                <a href="{{ route('admin.booking.index') }}" class="text-label-md text-primary hover:text-secondary-container transition-colors">Lihat Semua</a>
             </div>
             <div class="overflow-x-auto">
                 @if($recentBookings->isEmpty())
-                    <div class="p-8 text-center text-on-surface-variant">
-                        <span class="material-symbols-outlined text-4xl block mb-2">event_busy</span>
-                        <p class="text-sm">Belum ada booking</p>
+                    <div class="p-12 text-center">
+                        <span class="material-symbols-outlined text-5xl text-outline-variant/50 block mb-3">event_busy</span>
+                        <p class="text-body-md text-on-surface-variant">Belum ada booking</p>
                     </div>
                 @else
                     <table class="w-full">
                         <thead>
-                            <tr class="text-left text-xs font-medium text-on-surface-variant uppercase tracking-wider bg-surface-container-low">
+                            <tr class="text-left text-caption-caps text-on-surface-variant uppercase tracking-wider bg-surface-container-low">
                                 <th class="px-6 py-3">Customer</th>
                                 <th class="px-6 py-3">Kendaraan</th>
                                 <th class="px-6 py-3">Total</th>
@@ -79,7 +100,7 @@
                         </thead>
                         <tbody class="divide-y divide-outline-variant/10">
                             @foreach($recentBookings as $booking)
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                            <tr class="hover:bg-surface-container-low/50 transition-colors duration-150">
                                 <td class="px-6 py-3">
                                     <span class="text-sm font-medium text-on-surface">{{ $booking->user->name ?? '-' }}</span>
                                 </td>
@@ -112,10 +133,9 @@
             </div>
         </div>
 
-        {{-- Status Kendaraan --}}
-        <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20">
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 fade-in stagger-4">
             <div class="px-6 py-4 border-b border-outline-variant/20">
-                <h2 class="text-headline-md text-headline-md text-primary">Status Kendaraan</h2>
+                <h2 class="font-headline-md text-headline-md text-primary">Status Kendaraan</h2>
             </div>
             <div class="p-6">
                 <canvas id="statusKendaraanChart" height="220"></canvas>
