@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kendaraan;
 use App\Models\ServiceKendaraan;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,40 +14,39 @@ class ServiceKendaraanSeeder extends Seeder
 
     public function run(): void
     {
-        // Service 1: Isuzu Elf (kendaraan_id=10) - rutin
-        // 8 Jul 2026, sedang_dikerjakan
-        ServiceKendaraan::create([
-            'kendaraan_id' => 10,
-            'jenis_service' => 'rutin',
-            'deskripsi' => 'Ganti oli mesin & filter',
-            'biaya' => 500000,
-            'tanggal_service' => Carbon::parse('2026-07-08'),
-            'estimasi_selesai' => Carbon::parse('2026-07-10'),
-            'status' => 'sedang_dikerjakan',
-        ]);
+        $today = Carbon::today();
 
-        // Service 2: Mitsubishi L300 (kendaraan_id=9) - perbaikan
-        // 6 Jul 2026, selesai
-        ServiceKendaraan::create([
-            'kendaraan_id' => 9,
-            'jenis_service' => 'perbaikan',
-            'deskripsi' => 'Ganti kampas rem depan & belakang',
-            'biaya' => 750000,
-            'tanggal_service' => Carbon::parse('2026-07-06'),
-            'estimasi_selesai' => Carbon::parse('2026-07-06'),
-            'status' => 'selesai',
-        ]);
+        $data = [
+            // [plat kendaraan, jenis_service, deskripsi, biaya, hari mulai service, durasi pengerjaan (hari), status]
+            ['B 0123 LM', 'rutin', 'Ganti oli mesin & filter udara', 500000, -1, 2, 'sedang_dikerjakan'],
+            ['B 5678 GH', 'rutin', 'Service berkala 10.000 km, cek rem & suspensi', 800000, -2, 1, 'selesai'],
+            ['B 3456 EF', 'perbaikan', 'Ganti kampas rem depan & belakang', 750000, -21, 1, 'selesai'],
+            ['B 1234 CD', 'rutin', 'Service berkala 5.000 km', 450000, -45, 1, 'selesai'],
+            ['B 8901 JK', 'rutin', 'Service berkala 30.000 km', 850000, 3, 1, 'dijadwalkan'],
+            ['B 2345 DE', 'rutin', 'Cek AC & ganti filter kabin', 400000, 6, 1, 'dijadwalkan'],
+        ];
 
-        // Service 3: Toyota Innova (kendaraan_id=3) - rutin
-        // 12 Jul 2026, dijadwalkan
-        ServiceKendaraan::create([
-            'kendaraan_id' => 3,
-            'jenis_service' => 'rutin',
-            'deskripsi' => 'Service berkala 10.000km',
-            'biaya' => 800000,
-            'tanggal_service' => Carbon::parse('2026-07-12'),
-            'estimasi_selesai' => Carbon::parse('2026-07-12'),
-            'status' => 'dijadwalkan',
-        ]);
+        foreach ($data as [$plat, $jenis, $deskripsi, $biaya, $hariMulai, $durasi, $status]) {
+            $kendaraan = Kendaraan::where('plat_nomor', $plat)->first();
+            if (!$kendaraan) {
+                continue;
+            }
+
+            $tanggalService = $today->copy()->addDays($hariMulai);
+
+            ServiceKendaraan::updateOrCreate(
+                [
+                    'kendaraan_id' => $kendaraan->id,
+                    'tanggal_service' => $tanggalService,
+                ],
+                [
+                    'jenis_service' => $jenis,
+                    'deskripsi' => $deskripsi,
+                    'biaya' => $biaya,
+                    'estimasi_selesai' => $tanggalService->copy()->addDays($durasi),
+                    'status' => $status,
+                ]
+            );
+        }
     }
 }

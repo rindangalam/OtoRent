@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Booking;
+use App\Models\Driver;
+use App\Models\Kendaraan;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,109 +16,59 @@ class BookingSeeder extends Seeder
 
     public function run(): void
     {
-        // Booking 1: Andi (user_id=3) - Avanza (kendaraan_id=1) - Budi (driver_id=1)
-        // Pakai Driver, 3 hari, harga 350000/hari, tarif driver 150000/hari
-        Booking::create([
-            'user_id' => 3,
-            'kendaraan_id' => 1,
-            'tipe_sewa' => 'driver',
-            'metode_antar' => null,
-            'ongkos_antar' => 0,
-            'driver_id' => 1,
-            'tanggal_mulai' => Carbon::parse('2026-07-10'),
-            'tanggal_selesai' => Carbon::parse('2026-07-12'),
-            'lokasi_jemput' => 'Jl. Merdeka No. 1, Jakarta',
-            'lokasi_tujuan' => 'Bandung, Jawa Barat',
-            'durasi_hari' => 3,
-            'total_kendaraan' => 1050000,
-            'total_driver' => 450000,
-            'grand_total' => 1500000,
-            'status' => 'pending',
-            'catatan' => 'Jemput di rumah, tujuan Bandung untuk liburan keluarga.',
-        ]);
+        $today = Carbon::today();
 
-        // Booking 2: Budi S (user_id=4) - Innova (kendaraan_id=3) - Agus (driver_id=2)
-        // Pakai Driver, 3 hari, harga 550000/hari, tarif driver 150000/hari
-        Booking::create([
-            'user_id' => 4,
-            'kendaraan_id' => 3,
-            'tipe_sewa' => 'driver',
-            'metode_antar' => null,
-            'ongkos_antar' => 0,
-            'driver_id' => 2,
-            'tanggal_mulai' => Carbon::parse('2026-07-05'),
-            'tanggal_selesai' => Carbon::parse('2026-07-07'),
-            'lokasi_jemput' => 'Jl. Sudirman No. 50, Jakarta',
-            'lokasi_tujuan' => 'Yogyakarta',
-            'durasi_hari' => 3,
-            'total_kendaraan' => 1650000,
-            'total_driver' => 450000,
-            'grand_total' => 2100000,
-            'status' => 'completed',
-            'catatan' => 'Perjalanan dinas ke Yogyakarta.',
-        ]);
+        $data = [
+            // [email user, plat kendaraan, tipe_sewa, metode_antar, ongkos_antar, nama driver, hari mulai (-/+), durasi, status, lokasi_jemput, lokasi_tujuan, catatan]
+            ['budi@example.com', 'B 1234 CD', 'driver', null, 0, 'Budi Santoso', -30, 3, 'completed', 'Jl. Merdeka No. 1, Jakarta', 'Bandung, Jawa Barat', 'Liburan keluarga ke Bandung.'],
+            ['citra@example.com', 'B 4567 FG', 'lepas_kunci', 'diantar', 75000, null, -25, 2, 'completed', 'Jl. Kuningan No. 10, Jakarta', null, 'Weekend ke Puncak, mobil diantar ke rumah.'],
+            ['andi@example.com', 'B 3456 EF', 'driver', null, 0, 'Agus Wijaya', -20, 3, 'completed', 'Jl. Sudirman No. 50, Jakarta', 'Yogyakarta', 'Perjalanan dinas ke Yogyakarta.'],
+            ['dewi@example.com', 'B 7890 IJ', 'lepas_kunci', 'jemput_sendiri', 0, null, -14, 2, 'completed', 'Jl. Rental OtoRent, Jakarta', null, 'Acara keluarga di luar kota.'],
+            ['eka@example.com', 'B 2345 DE', 'driver', null, 0, 'Dedi Kurniawan', -9, 2, 'completed', 'Jl. Gatot Subroto No. 30, Jakarta', 'Anyer, Banten', 'Liburan akhir pekan ke Anyer.'],
+            ['fajar@example.com', 'B 5678 GH', 'lepas_kunci', 'jemput_sendiri', 0, null, -2, 4, 'ongoing', 'Jl. Rental OtoRent, Jakarta', null, 'Mobil untuk keperluan keluarga 4 hari.'],
+            ['gilang@example.com', 'B 6789 HI', 'driver', null, 0, 'Eko Prasetyo', 2, 2, 'confirmed', 'Jl. Thamrin No. 7, Jakarta', 'Bogor, Jawa Barat', 'Jalan-jalan ke Bogor dengan driver.'],
+            ['hana@example.com', 'B 1234 KL', 'lepas_kunci', 'diantar', 100000, null, 5, 1, 'confirmed', 'Hotel Grand Hyatt, Jakarta', null, 'Acara gathering keluarga, mobil diantar ke hotel.'],
+            ['irfan@example.com', 'B 2345 LM', 'driver', null, 0, 'Gunawan Setiawan', 8, 3, 'pending', 'Jl. Rasuna Said No. 25, Jakarta', 'Semarang, Jawa Tengah', 'Kunjungan keluarga ke Semarang.'],
+            ['andi@example.com', 'B 1234 CD', 'lepas_kunci', 'diantar', 75000, null, 12, 2, 'pending', 'Jl. Sudirman No. 50, Jakarta', null, 'Acara kantor, butuh mobil sementara.'],
+            ['citra@example.com', 'B 4567 FG', 'driver', null, 0, 'Hendra Wijaya', 15, 2, 'confirmed', 'Jl. Kuningan No. 10, Jakarta', 'Karawang, Jawa Barat', 'Mengunjungi pameran di Karawang.'],
+            ['dewi@example.com', 'B 8901 JK', 'lepas_kunci', 'jemput_sendiri', 0, null, 18, 3, 'confirmed', 'Jl. Rental OtoRent, Jakarta', null, 'Keperluan pindahan sebagian barang.'],
+        ];
 
-        // Booking 3: Citra (user_id=5) - Pajero (kendaraan_id=4) - Lepas Kunci + Diantar
-        // 3 hari, harga 800000/hari, ongkos antar 75000
-        Booking::create([
-            'user_id' => 5,
-            'kendaraan_id' => 4,
-            'tipe_sewa' => 'lepas_kunci',
-            'metode_antar' => 'diantar',
-            'ongkos_antar' => 75000,
-            'driver_id' => null,
-            'tanggal_mulai' => Carbon::parse('2026-07-15'),
-            'tanggal_selesai' => Carbon::parse('2026-07-17'),
-            'lokasi_jemput' => 'Jl. Kuningan No. 10, Jakarta',
-            'lokasi_tujuan' => null,
-            'durasi_hari' => 3,
-            'total_kendaraan' => 2400000,
-            'total_driver' => 0,
-            'grand_total' => 2475000,
-            'status' => 'confirmed',
-            'catatan' => 'Liburan ke Puncak, lepas kunci.',
-        ]);
+        foreach ($data as [$email, $plat, $tipe, $metode, $ongkos, $namaDriver, $hariMulai, $durasi, $status, $lokasiJemput, $lokasiTujuan, $catatan]) {
+            $user = User::where('email', $email)->first();
+            $kendaraan = Kendaraan::where('plat_nomor', $plat)->first();
+            if (!$user || !$kendaraan) {
+                continue;
+            }
 
-        // Booking 4: Andi (user_id=3) - Fortuner (kendaraan_id=5) - Lepas Kunci + Jemput Sendiri
-        // 3 hari, harga 900000/hari
-        Booking::create([
-            'user_id' => 3,
-            'kendaraan_id' => 5,
-            'tipe_sewa' => 'lepas_kunci',
-            'metode_antar' => 'jemput_sendiri',
-            'ongkos_antar' => 0,
-            'driver_id' => null,
-            'tanggal_mulai' => Carbon::parse('2026-07-20'),
-            'tanggal_selesai' => Carbon::parse('2026-07-22'),
-            'lokasi_jemput' => 'Jl. Rental OtoRent, Jakarta',
-            'lokasi_tujuan' => null,
-            'durasi_hari' => 3,
-            'total_kendaraan' => 2700000,
-            'total_driver' => 0,
-            'grand_total' => 2700000,
-            'status' => 'pending',
-            'catatan' => null,
-        ]);
+            $driver = $namaDriver ? Driver::where('nama_driver', $namaDriver)->first() : null;
 
-        // Booking 5: Budi S (user_id=4) - Brio (kendaraan_id=6) - Dedi (driver_id=3)
-        // Pakai Driver, 2 hari, harga 300000/hari, tarif driver 200000/hari
-        Booking::create([
-            'user_id' => 4,
-            'kendaraan_id' => 6,
-            'tipe_sewa' => 'driver',
-            'metode_antar' => null,
-            'ongkos_antar' => 0,
-            'driver_id' => 3,
-            'tanggal_mulai' => Carbon::parse('2026-08-01'),
-            'tanggal_selesai' => Carbon::parse('2026-08-02'),
-            'lokasi_jemput' => 'Jl. Sudirman No. 50, Jakarta',
-            'lokasi_tujuan' => 'Anyer, Banten',
-            'durasi_hari' => 2,
-            'total_kendaraan' => 600000,
-            'total_driver' => 400000,
-            'grand_total' => 1000000,
-            'status' => 'ongoing',
-            'catatan' => 'Liburan akhir pekan ke Anyer.',
-        ]);
+            $totalKendaraan = $kendaraan->harga_sewa_per_hari * $durasi;
+            $totalDriver = $driver ? $driver->tarif_per_hari * $durasi : 0;
+            $grandTotal = $totalKendaraan + $totalDriver + $ongkos;
+
+            Booking::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'kendaraan_id' => $kendaraan->id,
+                    'tanggal_mulai' => $today->copy()->addDays($hariMulai),
+                ],
+                [
+                    'tipe_sewa' => $tipe,
+                    'metode_antar' => $metode,
+                    'ongkos_antar' => $ongkos,
+                    'driver_id' => $driver?->id,
+                    'tanggal_selesai' => $today->copy()->addDays($hariMulai)->addDays($durasi - 1),
+                    'lokasi_jemput' => $lokasiJemput,
+                    'lokasi_tujuan' => $lokasiTujuan,
+                    'durasi_hari' => $durasi,
+                    'total_kendaraan' => $totalKendaraan,
+                    'total_driver' => $totalDriver,
+                    'grand_total' => $grandTotal,
+                    'status' => $status,
+                    'catatan' => $catatan,
+                ]
+            );
+        }
     }
 }
