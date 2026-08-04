@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Kendaraan;
 use App\Models\Driver;
+use App\Enums\StatusBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,6 +59,29 @@ class BookingController extends Controller
         $kendaraan = Kendaraan::findOrFail($validated['kendaraan_id']);
         $mulai = \Carbon\Carbon::parse($validated['tanggal_mulai']);
         $selesai = \Carbon\Carbon::parse($validated['tanggal_selesai']);
+
+        if ($kendaraan->status->value !== 'tersedia') {
+            return back()->withInput()
+                ->with('error', 'Kendaraan tidak tersedia saat ini.');
+        }
+
+        $overlap = Booking::where('kendaraan_id', $kendaraan->id)
+            ->whereNotIn('status', [StatusBooking::Completed->value, StatusBooking::Cancelled->value])
+            ->where(function ($query) use ($mulai, $selesai) {
+                $query->whereBetween('tanggal_mulai', [$mulai, $selesai])
+                    ->orWhereBetween('tanggal_selesai', [$mulai, $selesai])
+                    ->orWhere(function ($query) use ($mulai, $selesai) {
+                        $query->where('tanggal_mulai', '<=', $mulai)
+                            ->where('tanggal_selesai', '>=', $selesai);
+                    });
+            })
+            ->exists();
+
+        if ($overlap) {
+            return back()->withInput()
+                ->with('error', 'Kendaraan sudah dibooking pada rentang tanggal tersebut.');
+        }
+
         $durasiHari = $mulai->diffInDays($selesai) + 1;
 
         $totalKendaraan = $kendaraan->harga_sewa_per_hari * $durasiHari;
@@ -90,6 +114,7 @@ class BookingController extends Controller
             'total_kendaraan' => $totalKendaraan,
             'total_driver' => $totalDriver,
             'grand_total' => $grandTotal,
+            'status' => StatusBooking::Pending,
             'catatan' => $validated['catatan'] ?? null,
         ]);
 

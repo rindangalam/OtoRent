@@ -34,6 +34,11 @@ class PembayaranController extends Controller
 
     public function verifikasi(Request $request, Pembayaran $pembayaran)
     {
+        if ($pembayaran->status->value !== StatusPembayaran::MenungguVerifikasi->value) {
+            return redirect()->route('admin.pembayaran.show', $pembayaran)
+                ->with('error', 'Pembayaran ini tidak sedang menunggu verifikasi.');
+        }
+
         $validated = $request->validate([
             'catatan_admin' => 'nullable|string|max:1000',
         ]);
@@ -53,6 +58,11 @@ class PembayaranController extends Controller
 
     public function tolak(Request $request, Pembayaran $pembayaran)
     {
+        if ($pembayaran->status->value !== StatusPembayaran::MenungguVerifikasi->value) {
+            return redirect()->route('admin.pembayaran.show', $pembayaran)
+                ->with('error', 'Pembayaran ini tidak sedang menunggu verifikasi.');
+        }
+
         $validated = $request->validate([
             'catatan_admin' => 'required|string|max:1000',
         ]);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Enums\StatusBooking;
 use App\Enums\StatusKendaraan;
+use App\Enums\StatusPembayaran;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -43,7 +44,37 @@ class BookingController extends Controller
             'status' => 'required|in:pending,confirmed,ongoing,completed,cancelled',
         ]);
 
+        $current = $booking->status;
         $newStatus = StatusBooking::from($validated['status']);
+
+        $allowed = [
+            StatusBooking::Pending->value => ['confirmed', 'cancelled'],
+            StatusBooking::Confirmed->value => ['ongoing', 'cancelled'],
+            StatusBooking::Ongoing->value => ['completed', 'cancelled'],
+            StatusBooking::Completed->value => [],
+            StatusBooking::Cancelled->value => [],
+        ];
+
+        if ($current->value === $newStatus->value) {
+            return redirect()->route('admin.booking.show', $booking)
+                ->with('info', 'Booking sudah berstatus tersebut.');
+        }
+
+        if (!in_array($newStatus->value, $allowed[$current->value], true)) {
+            return redirect()->route('admin.booking.show', $booking)
+                ->with('error', 'Perubahan status tidak diizinkan: ' . $current->label() . ' → ' . $newStatus->label() . '.');
+        }
+
+        if ($newStatus === StatusBooking::Confirmed && !$booking->pembayaran) {
+            return redirect()->route('admin.booking.show', $booking)
+                ->with('error', 'Booking tidak bisa dikonfirmasi sebelum pembayaran lunas.');
+        }
+
+        if ($newStatus === StatusBooking::Confirmed && $booking->pembayaran->status->value !== StatusPembayaran::Lunas->value) {
+            return redirect()->route('admin.booking.show', $booking)
+                ->with('error', 'Booking tidak bisa dikonfirmasi sebelum pembayaran lunas.');
+        }
+
         $booking->update(['status' => $newStatus]);
 
         match ($newStatus) {

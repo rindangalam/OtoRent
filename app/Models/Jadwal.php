@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jadwal extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'driver_id',
         'kendaraan_id',
@@ -18,8 +20,8 @@ class Jadwal extends Model
 
     protected $casts = [
         'tanggal' => 'date',
-        'waktu_mulai' => 'datetime',
-        'waktu_selesai' => 'datetime',
+        'waktu_mulai' => 'string',
+        'waktu_selesai' => 'string',
     ];
 
     public function driver(): BelongsTo

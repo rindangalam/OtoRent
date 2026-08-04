@@ -31,10 +31,8 @@ class JadwalController extends Controller
 
     public function create()
     {
-        $drivers = Driver::where('status', 'aktif')->get();
-        $kendaraans = Kendaraan::all();
-
-        return view('admin.jadwal.create', compact('drivers', 'kendaraans'));
+        return redirect()->route('admin.jadwal.index')
+            ->with('info', 'Jadwal baru ditambahkan melalui form Booking.');
     }
 
     public function edit(Jadwal $jadwal)
