@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Laporan')
 @section('content')
 <style>
     .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
@@ -43,7 +44,7 @@
     </div>
 
     <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 p-6 fade-in stagger-3">
-        <h2 class="text-label-lg text-on-surface mb-4">Pendapatan 6 Bulan Terakhir</h2>
+        <h2 class="text-label-lg text-on-surface mb-4">Pendapatan 12 Bulan Terakhir</h2>
         <canvas id="laporanChart" height="200"></canvas>
     </div>
 

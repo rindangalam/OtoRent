@@ -7,7 +7,6 @@
     .glass-card {
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .reveal {
         opacity: 0;
@@ -46,7 +45,7 @@
         <div class="space-y-8 glass-card p-10 rounded-[2.5rem] lg:bg-transparent lg:backdrop-blur-0 lg:border-0 lg:p-0">
             <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
                 <span class="w-2 h-2 rounded-full bg-status-success animate-ping"></span>
-                <span class="text-white font-caption-caps text-caption-caps uppercase tracking-widest">Koleksi Elite 2024</span>
+                <span class="text-white font-caption-caps text-caption-caps uppercase tracking-widest">Temukan Kendaraan Anda</span>
             </div>
             <h1 class="text-white font-display-hero text-display-hero-mobile md:text-display-hero max-w-xl">
                 Definisi Baru <span class="text-secondary-container">Kemewahan</span> Dalam Berkendara.
@@ -59,9 +58,13 @@
                 <a href="{{ route('register') }}" class="px-8 py-4 bg-secondary-container text-on-secondary-fixed font-bold rounded-xl shadow-lg hover:shadow-secondary-container/20 hover:-translate-y-1 transition-all duration-300 btn-interact text-center">
                     Pesan Sekarang
                 </a>
-                @else
+                @elseif (auth()->user()->role->value === 'customer')
                 <a href="{{ route('booking.create') }}" class="px-8 py-4 bg-secondary-container text-on-secondary-fixed font-bold rounded-xl shadow-lg hover:shadow-secondary-container/20 hover:-translate-y-1 transition-all duration-300 btn-interact text-center">
                     Pesan Sekarang
+                </a>
+                @else
+                <a href="{{ route('admin.dashboard') }}" class="px-8 py-4 bg-secondary-container text-on-secondary-fixed font-bold rounded-xl shadow-lg hover:shadow-secondary-container/20 hover:-translate-y-1 transition-all duration-300 btn-interact text-center">
+                    Buka Dashboard
                 </a>
                 @endguest
                 <a href="{{ route('kendaraan.index') }}" class="px-8 py-4 bg-transparent border border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 group inline-flex items-center justify-center gap-2 btn-interact">
@@ -143,8 +146,9 @@
                 <div class="relative h-64 overflow-hidden">
                     <div class="absolute top-4 left-4 z-10">
                         @php
-                            $statusClass = $kendaraan->status === 'tersedia' ? 'bg-status-success' : ($kendaraan->status === 'disewa' ? 'bg-primary' : 'bg-secondary-container');
-                            $statusText = $kendaraan->status === 'tersedia' ? 'Tersedia' : ($kendaraan->status === 'disewa' ? 'Terlaris' : 'Promo');
+                            $statusValue = $kendaraan->status->value;
+                            $statusClass = $statusValue === 'tersedia' ? 'bg-status-success' : ($statusValue === 'disewa' ? 'bg-primary' : 'bg-secondary-container');
+                            $statusText = $statusValue === 'tersedia' ? 'Tersedia' : ($statusValue === 'disewa' ? 'Terlaris' : 'Promo');
                         @endphp
                         <span class="{{ $statusClass }} text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{{ $statusText }}</span>
                     </div>

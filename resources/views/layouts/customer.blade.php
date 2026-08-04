@@ -95,37 +95,37 @@
     {{-- Sidebar (lg+) --}}
     <aside class="fixed left-0 top-0 h-full w-64 hidden lg:flex flex-col glass-panel shadow-lg p-6 space-y-4 z-40 border-r border-outline-variant/20">
         <div class="mb-6">
-            <a href="{{ route('customer.dashboard') }}" class="text-headline-md text-headline-md font-extrabold text-primary tracking-tighter">OtoRent</a>
-            <p class="text-label-md text-label-md text-on-surface-variant opacity-70">Premium Mobility</p>
+            <a href="{{ route('customer.dashboard') }}" class="text-headline-md font-extrabold text-primary tracking-tighter">OtoRent</a>
+            <p class="text-label-md text-on-surface-variant opacity-70">Premium Mobility</p>
         </div>
         <nav class="flex-grow space-y-1">
             <a href="{{ route('customer.dashboard') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('customer.dashboard') ? 'bg-secondary-container text-on-secondary-container rounded-lg font-bold shadow-sm' : 'text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 rounded-lg' }} transition-all">
                 <span class="material-symbols-outlined {{ request()->routeIs('customer.dashboard') ? '' : '' }}" style="{{ request()->routeIs('customer.dashboard') ? 'font-variation-settings: \'FILL\' 1;' : '' }}">dashboard</span>
-                <span class="text-label-md text-label-md">Dashboard</span>
+                <span class="text-label-md">Dashboard</span>
             </a>
             <a href="{{ route('booking.index') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('booking.*') && !request()->routeIs('booking.create') ? 'bg-secondary-container text-on-secondary-container rounded-lg font-bold shadow-sm' : 'text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 rounded-lg' }} transition-all">
                 <span class="material-symbols-outlined {{ request()->routeIs('booking.*') ? 'filled' : '' }}">calendar_today</span>
-                <span class="text-label-md text-label-md">Reservations</span>
+                <span class="text-label-md">Reservasi</span>
             </a>
             <a href="{{ route('booking.create') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('booking.create') ? 'bg-secondary-container text-on-secondary-container rounded-lg font-bold shadow-sm' : 'text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 rounded-lg' }} transition-all">
                 <span class="material-symbols-outlined">directions_car</span>
-                <span class="text-label-md text-label-md">Sewa Baru</span>
+                <span class="text-label-md">Sewa Baru</span>
             </a>
             <a href="{{ route('profil.edit') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('profil.*') ? 'bg-secondary-container text-on-secondary-container rounded-lg font-bold shadow-sm' : 'text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 rounded-lg' }} transition-all">
                 <span class="material-symbols-outlined">settings</span>
-                <span class="text-label-md text-label-md">Settings</span>
+                <span class="text-label-md">Pengaturan</span>
             </a>
         </nav>
         <div class="pt-6 border-t border-outline-variant/30 flex flex-col gap-2">
             <a href="#" class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-primary transition-colors">
                 <span class="material-symbols-outlined">help</span>
-                <span class="text-label-md text-label-md">Support</span>
+                <span class="text-label-md">Bantuan</span>
             </a>
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="flex items-center gap-3 px-4 py-2 text-status-danger hover:opacity-80 transition-opacity w-full">
                     <span class="material-symbols-outlined">logout</span>
-                    <span class="text-label-md text-label-md">Sign Out</span>
+                    <span class="text-label-md">Keluar</span>
                 </button>
             </form>
         </div>
@@ -153,9 +153,9 @@
                 <a href="{{ route('booking.index') }}" class="block px-3 py-2 text-sm font-medium rounded-lg {{ request()->routeIs('booking.*') ? 'bg-secondary-container text-on-secondary-container' : 'text-on-surface hover:bg-surface-container' }}">Booking</a>
                 <a href="{{ route('booking.create') }}" class="block px-3 py-2 text-sm font-medium rounded-lg {{ request()->routeIs('booking.create') ? 'bg-secondary-container text-on-secondary-container' : 'text-on-surface hover:bg-surface-container' }}">Sewa Baru</a>
                 <a href="{{ route('profil.edit') }}" class="block px-3 py-2 text-sm font-medium rounded-lg {{ request()->routeIs('profil.*') ? 'bg-secondary-container text-on-secondary-container' : 'text-on-surface hover:bg-surface-container' }}">Profil</a>
-                <form method="POST" action="/logout">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Logout</button>
+                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Keluar</button>
                 </form>
             </div>
         </div>
@@ -189,7 +189,7 @@
     <nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/80 backdrop-blur-lg border-t border-outline-variant/10 lg:hidden flex justify-around p-3 z-50">
         <a href="{{ route('customer.dashboard') }}" class="flex flex-col items-center gap-1 {{ request()->routeIs('customer.dashboard') ? 'text-secondary-container' : 'text-on-surface-variant' }}">
             <span class="material-symbols-outlined" style="{{ request()->routeIs('customer.dashboard') ? 'font-variation-settings: \'FILL\' 1;' : '' }}">dashboard</span>
-            <span class="text-[10px] {{ request()->routeIs('customer.dashboard') ? 'font-bold' : '' }}">Home</span>
+            <span class="text-[10px] {{ request()->routeIs('customer.dashboard') ? 'font-bold' : '' }}">Beranda</span>
         </a>
         <a href="{{ route('booking.index') }}" class="flex flex-col items-center gap-1 {{ request()->routeIs('booking.*') && !request()->routeIs('booking.create') ? 'text-secondary-container' : 'text-on-surface-variant' }}">
             <span class="material-symbols-outlined">calendar_today</span>
@@ -201,7 +201,7 @@
         </a>
         <a href="{{ route('kendaraan.index') }}" class="flex flex-col items-center gap-1 text-on-surface-variant">
             <span class="material-symbols-outlined">directions_car</span>
-            <span class="text-[10px]">Fleet</span>
+            <span class="text-[10px]">Armada</span>
         </a>
         <a href="{{ route('profil.edit') }}" class="flex flex-col items-center gap-1 {{ request()->routeIs('profil.*') ? 'text-secondary-container' : 'text-on-surface-variant' }}">
             <span class="material-symbols-outlined">person</span>

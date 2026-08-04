@@ -1,4 +1,7 @@
-@extends('layouts.guest')
+@php
+    $layout = in_array(auth()->user()->role, ['admin', 'staff'], true) ? 'layouts.admin' : 'layouts.customer';
+@endphp
+@extends($layout)
 
 @section('title', 'Profil')
 

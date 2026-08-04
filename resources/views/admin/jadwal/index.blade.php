@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Jadwal')
 @section('content')
 <style>
     .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }

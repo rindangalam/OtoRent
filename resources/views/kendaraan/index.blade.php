@@ -52,7 +52,7 @@
                 <p class="text-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-xl font-light">Eksplorasi koleksi kendaraan premium kami yang dikurasi khusus untuk kenyamanan dan performa terbaik di setiap perjalanan Anda.</p>
             </div>
             <form method="GET" action="{{ route('kendaraan.index') }}" class="relative w-full lg:w-[450px]">
-                <input name="search" value="{{ request('search') }}" class="w-full pl-14 pr-6 py-5 rounded-2xl border-none bg-surface-container-high/50 backdrop-blur shadow-inner focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-on-surface placeholder-outline text-body-md text-body-md" placeholder="Cari tipe, merk, atau kategori..." type="text">
+                <input name="search" value="{{ request('search') }}" class="w-full pl-14 pr-6 py-5 rounded-2xl border-none bg-surface-container-high/50 backdrop-blur shadow-inner focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-on-surface placeholder-outline text-body-md" placeholder="Cari tipe, merk, atau kategori..." type="text">
                 <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
             </form>
         </div>
@@ -62,16 +62,16 @@
     <nav class="sticky top-20 z-40 bg-background/80 backdrop-blur-xl py-6 border-b border-surface-variant/20 mb-16 shadow-xl shadow-black/[0.02]">
         <div class="flex items-center space-x-4 md:space-x-10 overflow-x-auto no-scrollbar">
             <a href="{{ route('kendaraan.index', array_merge(request()->except('jenis'), ['jenis' => ''])) }}"
-               class="whitespace-nowrap px-4 py-1 text-label-md text-label-md {{ !request('jenis') ? 'active-tab text-primary' : 'text-on-surface-variant hover:text-primary' }} transition-all">Semua</a>
+               class="whitespace-nowrap px-4 py-1 text-label-md {{ !request('jenis') ? 'active-tab text-primary' : 'text-on-surface-variant hover:text-primary' }} transition-all">Semua</a>
             @foreach ($jenisList as $jenis)
             <a href="{{ route('kendaraan.index', array_merge(request()->except('jenis'), ['jenis' => $jenis->value])) }}"
-               class="whitespace-nowrap px-4 py-1 text-label-md text-label-md {{ request('jenis') === $jenis->value ? 'active-tab text-primary' : 'text-on-surface-variant hover:text-primary' }} transition-colors">{{ $jenis->label() }}</a>
+               class="whitespace-nowrap px-4 py-1 text-label-md {{ request('jenis') === $jenis->value ? 'active-tab text-primary' : 'text-on-surface-variant hover:text-primary' }} transition-colors">{{ $jenis->label() }}</a>
             @endforeach
             <div class="flex-grow"></div>
             <div class="flex items-center space-x-3 border-l border-surface-variant/30 pl-10 hidden lg:flex">
                 <span class="text-on-surface-variant/60 text-caption-caps text-caption-caps uppercase tracking-widest">Urutkan</span>
                 <select name="sort" onchange="this.form.submit()" form="sort-form"
-                    class="bg-transparent border-none focus:ring-0 text-label-md text-label-md text-primary cursor-pointer hover:text-secondary-container transition-colors">
+                    class="bg-transparent border-none focus:ring-0 text-label-md text-primary cursor-pointer hover:text-secondary-container transition-colors">
                     <option value="terbaru" {{ request('sort', 'terbaru') === 'terbaru' ? 'selected' : '' }}>Terbaru</option>
                     <option value="harga_terendah" {{ request('sort') === 'harga_terendah' ? 'selected' : '' }}>Harga Terendah</option>
                     <option value="harga_tertinggi" {{ request('sort') === 'harga_tertinggi' ? 'selected' : '' }}>Harga Tertinggi</option>
@@ -111,14 +111,14 @@
                     @endphp
                     <span class="{{ $statusColor }} px-4 py-1.5 rounded-full text-caption-caps text-caption-caps border">{{ $kendaraan->status->label() }}</span>
                 </div>
-                <div class="absolute top-5 right-5 bg-primary/80 backdrop-blur-md text-on-primary px-4 py-1.5 rounded-xl text-label-md text-label-md shadow-lg">
+                <div class="absolute top-5 right-5 bg-primary/80 backdrop-blur-md text-on-primary px-4 py-1.5 rounded-xl text-label-md shadow-lg">
                     Rp {{ number_format($kendaraan->harga_sewa_per_hari, 0, ',', '.') }}<span class="text-[10px] font-light opacity-80 uppercase tracking-widest ml-1">/hari</span>
                 </div>
             </div>
             <div class="p-8 flex flex-col flex-grow">
                 <div class="mb-6">
-                    <h3 class="text-headline-md text-headline-md text-primary mb-2 tracking-tight group-hover:text-secondary transition-colors">{{ $kendaraan->nama_kendaraan }}</h3>
-                    <p class="text-body-md text-body-md text-on-surface-variant/70 font-light">{{ $kendaraan->jenis->label() }} {{ $kendaraan->tahun }}</p>
+                    <h3 class="text-headline-md text-primary mb-2 tracking-tight group-hover:text-secondary transition-colors">{{ $kendaraan->nama_kendaraan }}</h3>
+                    <p class="text-body-md text-on-surface-variant/70 font-light">{{ $kendaraan->jenis->label() }} {{ $kendaraan->tahun }}</p>
                 </div>
                 <div class="grid grid-cols-3 gap-3 mb-10">
                     <div class="icon-box flex flex-col items-center p-3 bg-surface-container-low/50 rounded-xl transition-all duration-300">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <a href="{{ route('kendaraan.show', $kendaraan) }}"
-                   class="mt-auto w-full bg-secondary-container text-on-secondary-container py-4 rounded-xl text-label-md text-label-md font-bold hover:shadow-xl hover:brightness-105 active:scale-[0.98] transition-all duration-300 text-center block">
+                   class="mt-auto w-full bg-secondary-container text-on-secondary-container py-4 rounded-xl text-label-md font-bold hover:shadow-xl hover:brightness-105 active:scale-[0.98] transition-all duration-300 text-center block">
                     Lihat Detail
                 </a>
             </div>
@@ -143,7 +143,7 @@
         @empty
         <div class="col-span-full text-center py-16">
             <div class="text-5xl mb-4">🚗</div>
-            <h3 class="text-headline-md text-headline-md text-on-surface-variant">Tidak ada kendaraan</h3>
+            <h3 class="text-headline-md text-on-surface-variant">Tidak ada kendaraan</h3>
             <p class="mt-2 text-on-surface-variant/60">Tidak ditemukan kendaraan yang sesuai dengan filter Anda.</p>
         </div>
         @endforelse
@@ -165,7 +165,7 @@
 
         {{-- Pagination Elements --}}
         @foreach ($kendaraans->getUrlRange(max(1, $kendaraans->currentPage() - 2), min($kendaraans->lastPage(), $kendaraans->currentPage() + 2)) as $page => $url)
-        <a href="{{ $url }}" class="w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300 text-label-md text-label-md
+        <a href="{{ $url }}" class="w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300 text-label-md
             {{ $page === $kendaraans->currentPage()
                 ? 'bg-primary text-on-primary shadow-lg shadow-primary/20'
                 : 'border border-surface-variant/30 text-on-surface-variant hover:bg-primary hover:text-on-primary hover:border-primary' }}">
@@ -176,7 +176,7 @@
         {{-- Dots --}}
         @if ($kendaraans->currentPage() + 2 < $kendaraans->lastPage())
         <span class="px-2 text-on-surface-variant/30 font-light">•••</span>
-        <a href="{{ $kendaraans->url($kendaraans->lastPage()) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-surface-variant/30 text-on-surface-variant hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-300 text-label-md text-label-md">
+        <a href="{{ $kendaraans->url($kendaraans->lastPage()) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-surface-variant/30 text-on-surface-variant hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-300 text-label-md">
             {{ $kendaraans->lastPage() }}
         </a>
         @endif

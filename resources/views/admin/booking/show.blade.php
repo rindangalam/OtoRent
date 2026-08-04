@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Detail Booking')
 @section('content')
 <style>
     .fade-in { opacity: 0; animation: fadeSlideIn 0.4s ease-out forwards; }
@@ -70,11 +71,11 @@
                     </div>
                     <div>
                         <p class="text-caption-caps text-on-surface-variant mb-1">Tanggal Mulai</p>
-                        <p class="text-body-md font-medium text-on-surface">{{ \Carbon\Carbon::parse($booking->tanggal_mulai)->format('d M Y, H:i') }}</p>
+                        <p class="text-body-md font-medium text-on-surface">{{ \Carbon\Carbon::parse($booking->tanggal_mulai)->format('d M Y') }}</p>
                     </div>
                     <div>
                         <p class="text-caption-caps text-on-surface-variant mb-1">Tanggal Selesai</p>
-                        <p class="text-body-md font-medium text-on-surface">{{ \Carbon\Carbon::parse($booking->tanggal_selesai)->format('d M Y, H:i') }}</p>
+                        <p class="text-body-md font-medium text-on-surface">{{ \Carbon\Carbon::parse($booking->tanggal_selesai)->format('d M Y') }}</p>
                     </div>
                     <div class="sm:col-span-2">
                         <p class="text-caption-caps text-on-surface-variant mb-1">

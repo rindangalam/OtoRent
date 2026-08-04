@@ -100,7 +100,7 @@
 {{-- Recent Bookings Table --}}
 <section class="glass-card rounded-xl shadow-sm overflow-hidden mt-8 animate-in stagger-3">
     <div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
-        <h3 class="text-headline-md text-headline-md text-primary">Booking Terakhir</h3>
+        <h3 class="text-headline-md text-primary">Booking Terakhir</h3>
         <a href="{{ route('booking.index') }}" class="text-primary text-label-md hover:underline decoration-secondary-container decoration-2 underline-offset-4">Lihat Semua</a>
     </div>
     <div class="overflow-x-auto">
@@ -160,6 +160,53 @@
         </table>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.animate-in');
+        elements.forEach(el => { el.style.opacity = '1'; });
+
+        const counters = document.querySelectorAll('.counter');
+        if (counters.length > 0) {
+            const speed = 200;
+            const startCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    const updateCount = () => {
+                        const currentCount = +counter.innerText;
+                        if (currentCount < target) {
+                            counter.innerText = Math.ceil(currentCount + inc);
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+                    updateCount();
+                });
+            };
+            setTimeout(startCounters, 400);
+        }
+
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(-10deg)';
+                    icon.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+    });
+</script>
 @endsection
 
 @section('right-panel')
@@ -229,52 +276,4 @@
     <p class="text-xs text-on-surface-variant mb-3">Gunakan kode <span class="font-bold text-primary">OTOULTRA</span> untuk diskon 25% semua tipe SUV.</p>
     <button class="text-xs font-bold text-secondary-container hover:text-secondary transition-colors uppercase tracking-wider">Klaim Sekarang</button>
 </section>
-@endsection
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const elements = document.querySelectorAll('.animate-in');
-        elements.forEach(el => { el.style.opacity = '1'; });
-
-        const counters = document.querySelectorAll('.counter');
-        if (counters.length > 0) {
-            const speed = 200;
-            const startCounters = () => {
-                counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-                    const updateCount = () => {
-                        const currentCount = +counter.innerText;
-                        if (currentCount < target) {
-                            counter.innerText = Math.ceil(currentCount + inc);
-                            setTimeout(updateCount, 1);
-                        } else {
-                            counter.innerText = target.toLocaleString();
-                        }
-                    };
-                    updateCount();
-                });
-            };
-            setTimeout(startCounters, 400);
-        }
-
-        const cards = document.querySelectorAll('.glass-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const icon = card.querySelector('.material-symbols-outlined');
-                if (icon) {
-                    icon.style.transform = 'scale(1.2) rotate(-10deg)';
-                    icon.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                const icon = card.querySelector('.material-symbols-outlined');
-                if (icon) {
-                    icon.style.transform = 'scale(1) rotate(0deg)';
-                }
-            });
-        });
-    });
-</script>
 @endsection

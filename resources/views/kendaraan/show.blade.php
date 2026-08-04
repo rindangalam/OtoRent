@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
 
         {{-- Back link --}}
-        <a href="{{ route('kendaraan.index') }}" class="inline-flex items-center text-label-md text-label-md text-on-surface-variant hover:text-on-surface transition mb-6">
+        <a href="{{ route('kendaraan.index') }}" class="inline-flex items-center text-label-md text-on-surface-variant hover:text-on-surface transition mb-6">
             <span class="material-symbols-outlined text-[18px] mr-1">arrow_back</span>
             Kembali ke Katalog
         </a>
@@ -33,7 +33,7 @@
                     <div class="flex items-start justify-between gap-3">
                         <div>
                             <h1 class="text-headline-lg text-headline-lg text-on-surface">{{ $kendaraan->nama_kendaraan }}</h1>
-                            <span class="mt-2 inline-flex items-center px-3 py-1 text-label-md text-label-md rounded-full bg-secondary-container/20 text-secondary-container">
+                            <span class="mt-2 inline-flex items-center px-3 py-1 text-label-md rounded-full bg-secondary-container/20 text-secondary-container">
                                 {{ $kendaraan->jenis->label() }}
                             </span>
                         </div>
@@ -45,31 +45,31 @@
                             ];
                             $statusColor = $statusColors[$kendaraan->status->value] ?? 'bg-surface-variant/50 text-on-surface-variant';
                         @endphp
-                        <span class="inline-flex items-center px-3 py-1 text-label-md text-label-md rounded-full {{ $statusColor }}">
+                        <span class="inline-flex items-center px-3 py-1 text-label-md rounded-full {{ $statusColor }}">
                             {{ $kendaraan->status->label() }}
                         </span>
                     </div>
 
                     <div class="mt-6 space-y-4">
                         <div class="flex justify-between py-3 border-b border-outline-variant/10">
-                            <span class="text-body-md text-body-md text-on-surface-variant">Plat Nomor</span>
-                            <span class="text-body-md text-body-md font-medium text-on-surface">{{ $kendaraan->plat_nomor }}</span>
+                            <span class="text-body-md text-on-surface-variant">Plat Nomor</span>
+                            <span class="text-body-md font-medium text-on-surface">{{ $kendaraan->plat_nomor }}</span>
                         </div>
                         <div class="flex justify-between py-3 border-b border-outline-variant/10">
-                            <span class="text-body-md text-body-md text-on-surface-variant">Tahun</span>
-                            <span class="text-body-md text-body-md font-medium text-on-surface">{{ $kendaraan->tahun }}</span>
+                            <span class="text-body-md text-on-surface-variant">Tahun</span>
+                            <span class="text-body-md font-medium text-on-surface">{{ $kendaraan->tahun }}</span>
                         </div>
                         <div class="flex justify-between py-3 border-b border-outline-variant/10">
-                            <span class="text-body-md text-body-md text-on-surface-variant">Warna</span>
-                            <span class="text-body-md text-body-md font-medium text-on-surface">{{ $kendaraan->warna }}</span>
+                            <span class="text-body-md text-on-surface-variant">Warna</span>
+                            <span class="text-body-md font-medium text-on-surface">{{ $kendaraan->warna }}</span>
                         </div>
                         <div class="flex justify-between py-3 border-b border-outline-variant/10">
-                            <span class="text-body-md text-body-md text-on-surface-variant">Kapasitas</span>
-                            <span class="text-body-md text-body-md font-medium text-on-surface">{{ $kendaraan->kapasitas }} penumpang</span>
+                            <span class="text-body-md text-on-surface-variant">Kapasitas</span>
+                            <span class="text-body-md font-medium text-on-surface">{{ $kendaraan->kapasitas }} penumpang</span>
                         </div>
                         <div class="flex justify-between py-3">
-                            <span class="text-body-md text-body-md text-on-surface-variant">Status</span>
-                            <span class="text-body-md text-body-md font-medium
+                            <span class="text-body-md text-on-surface-variant">Status</span>
+                            <span class="text-body-md font-medium
                                 {{ $kendaraan->status->value === 'tersedia' ? 'text-status-success' : '' }}
                                 {{ $kendaraan->status->value === 'disewa' ? 'text-status-warning' : '' }}
                                 {{ $kendaraan->status->value === 'service' ? 'text-status-danger' : '' }}">
@@ -79,10 +79,10 @@
                     </div>
 
                     <div class="mt-6 pt-6 border-t border-outline-variant/10">
-                        <p class="text-body-md text-body-md text-on-surface-variant mb-1">Harga Sewa</p>
+                        <p class="text-body-md text-on-surface-variant mb-1">Harga Sewa</p>
                         <p class="text-display-sm text-display-sm font-bold text-accent-500">
                             Rp{{ number_format($kendaraan->harga_sewa_per_hari, 0, ',', '.') }}
-                            <span class="text-body-md text-body-md font-normal text-on-surface-variant">/hari</span>
+                            <span class="text-body-md font-normal text-on-surface-variant">/hari</span>
                         </p>
                     </div>
 
@@ -105,8 +105,8 @@
 
         {{-- Description --}}
         <div class="mt-8 bg-surface-container-lowest rounded-xl shadow-sm p-6 sm:p-8">
-            <h2 class="text-headline-md text-headline-md text-on-surface mb-4">Deskripsi</h2>
-            <p class="text-body-md text-body-md text-on-surface-variant leading-relaxed">{{ $kendaraan->deskripsi }}</p>
+            <h2 class="text-headline-md text-on-surface mb-4">Deskripsi</h2>
+            <p class="text-body-md text-on-surface-variant leading-relaxed">{{ $kendaraan->deskripsi }}</p>
         </div>
 
     </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Admin' }} | OtoRent</title>
+    <title>@yield('title', 'Admin') | OtoRent</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
@@ -84,7 +84,6 @@
         }
     </style>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         ::-webkit-scrollbar { width: 6px; }
@@ -194,7 +193,7 @@
         </nav>
 
         <div class="px-3 py-4 border-t border-white/10">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit"
                     class="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-on-primary/70 hover:bg-white/10 hover:text-on-primary transition-all duration-200">
@@ -218,7 +217,7 @@
                 </button>
 
                 <div class="hidden sm:block">
-                    <h1 class="text-lg font-semibold text-on-surface">{{ $title ?? 'Dashboard' }}</h1>
+                    <h1 class="text-lg font-semibold text-on-surface">@yield('title', 'Dashboard')</h1>
                 </div>
 
                 <div class="flex items-center gap-4">
