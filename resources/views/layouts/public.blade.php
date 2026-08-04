@@ -91,8 +91,8 @@
             <div class="hidden md:flex gap-6 items-center">
                 <a href="{{ route('landing') }}" class="font-body-md text-body-md {{ request()->routeIs('landing') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Beranda</a>
                 <a href="{{ route('kendaraan.index') }}" class="font-body-md text-body-md {{ request()->routeIs('kendaraan.*') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Kendaraan</a>
-                <a href="#" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Layanan</a>
-                <a href="#" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Kontak</a>
+                <a href="{{ route('layanan') }}" class="font-body-md text-body-md {{ request()->routeIs('layanan') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Layanan</a>
+                <a href="{{ route('kontak') }}" class="font-body-md text-body-md {{ request()->routeIs('kontak*') ? 'text-primary font-bold border-b-2 border-secondary-container' : 'text-on-surface hover:text-primary' }} transition-colors duration-200">Kontak</a>
             </div>
         </div>
         <div class="flex items-center gap-4">
@@ -103,7 +103,7 @@
             <button class="material-symbols-outlined p-2 text-surface hover:bg-surface-container rounded-full transition-all hidden sm:block">notifications</button>
             @auth
                 <a href="{{ auth()->user()->role->value === 'admin' || auth()->user()->role->value === 'staff' ? route('admin.dashboard') : route('customer.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container hover:shadow-md transition-all hidden sm:block">Dashboard</a>
-                <form method="POST" action="/logout" class="hidden sm:block">
+                <form method="POST" action="{{ route('logout') }}" class="hidden sm:block">
                     @csrf
                     <button type="submit" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Logout</button>
                 </form>
@@ -120,6 +120,27 @@
     </div>
 </nav>
 
+<div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-outline-variant/30 shadow-lg">
+    <div class="px-4 py-4 space-y-1 max-w-[1280px] mx-auto">
+        <a href="{{ route('landing') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md {{ request()->routeIs('landing') ? 'bg-secondary-container/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container' }} transition-colors">Beranda</a>
+        <a href="{{ route('kendaraan.index') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md {{ request()->routeIs('kendaraan.*') ? 'bg-secondary-container/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container' }} transition-colors">Kendaraan</a>
+        <a href="{{ route('layanan') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md {{ request()->routeIs('layanan') ? 'bg-secondary-container/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container' }} transition-colors">Layanan</a>
+        <a href="{{ route('kontak') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md {{ request()->routeIs('kontak*') ? 'bg-secondary-container/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container' }} transition-colors">Kontak</a>
+        <div class="border-t border-outline-variant/20 pt-3 mt-3 space-y-1">
+            @auth
+                <a href="{{ auth()->user()->role->value === 'admin' || auth()->user()->role->value === 'staff' ? route('admin.dashboard') : route('customer.dashboard') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-primary font-bold bg-primary/5 hover:bg-primary/10 transition-colors">Dashboard</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="block w-full text-left px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Logout</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md bg-primary text-on-primary text-center hover:bg-primary-container transition-colors">Masuk</a>
+                <a href="{{ route('register') }}" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Daftar</a>
+            @endauth
+        </div>
+    </div>
+</div>
+
 <main>
     @yield('content')
 </main>
@@ -132,13 +153,13 @@
                 Penyedia layanan sewa mobil premium nomor satu di Indonesia. Mewah, terpercaya, dan profesional.
             </p>
             <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="{{ route('layanan') }}">
                     <span class="material-symbols-outlined text-[20px]">public</span>
                 </a>
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="https://wa.me/6281234567890" target="_blank" rel="noopener">
                     <span class="material-symbols-outlined text-[20px]">chat</span>
                 </a>
-                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="#">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="{{ route('kontak') }}">
                     <span class="material-symbols-outlined text-[20px]">mail</span>
                 </a>
             </div>
@@ -146,19 +167,19 @@
         <div class="space-y-6">
             <h5 class="font-bold text-lg">Layanan</h5>
             <ul class="space-y-3 text-on-primary/70">
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Harian</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Bulanan</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Layanan Chauffeur</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Sewa Korporat</a></li>
+                                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('layanan') }}">Sewa Harian</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('layanan') }}">Sewa Bulanan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('layanan') }}">Layanan Chauffeur</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('layanan') }}">Sewa Korporat</a></li>
             </ul>
         </div>
         <div class="space-y-6">
             <h5 class="font-bold text-lg">Perusahaan</h5>
             <ul class="space-y-3 text-on-primary/70">
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Tentang Kami</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Lokasi</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Karir</a></li>
-                <li><a class="hover:text-secondary-container transition-colors" href="#">Blog</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('kendaraan.index') }}">Tentang Kami</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('kontak') }}">Lokasi</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('kontak') }}">Karir</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('kontak') }}">Blog</a></li>
             </ul>
         </div>
         <div class="space-y-6">
@@ -191,6 +212,14 @@
             nav.classList.remove('h-16', 'shadow-md');
         }
     });
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
 </script>
 </body>
 </html>

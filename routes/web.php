@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Customer\DashboardController;
 use App\Http\Controllers\Customer\BookingController;
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 // Public routes
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/layanan', [PublicPageController::class, 'layanan'])->name('layanan');
+Route::get('/kontak', [PublicPageController::class, 'kontak'])->name('kontak');
+Route::post('/kontak', [PublicPageController::class, 'kontakStore'])->name('kontak.store');
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.index');
 Route::get('/kendaraan/{kendaraan}', [KendaraanController::class, 'show'])->name('kendaraan.show');
 
