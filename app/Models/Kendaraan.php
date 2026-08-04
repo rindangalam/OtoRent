@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enums\JenisKendaraan;
 use App\Enums\StatusKendaraan;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kendaraan extends Model
 {
+    use HasFactory;
     protected $table = 'kendaraans';
 
     protected $fillable = [

@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enums\MetodePembayaran;
 use App\Enums\StatusPembayaran;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pembayaran extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'booking_id',
         'metode',

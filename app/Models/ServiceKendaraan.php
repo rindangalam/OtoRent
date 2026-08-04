@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enums\JenisService;
 use App\Enums\StatusService;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ServiceKendaraan extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'kendaraan_id',
         'jenis_service',
