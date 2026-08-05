@@ -126,12 +126,12 @@
                 <span class="material-symbols-outlined">help</span>
                 <span class="text-label-md">Bantuan</span>
             </a>
-            <form method="POST" action="/logout/">
-                <input type="hidden" name="_token" value="mZjleF7x2yIseiP8KPcyTDoi8E3zluqzV68O1LlW" autocomplete="off">                <button type="submit" class="flex items-center gap-3 px-4 py-2 text-status-danger hover:opacity-80 transition-opacity w-full">
+            <a href="/login/">
+                                <a class="flex items-center gap-3 px-4 py-2 text-status-danger hover:opacity-80 transition-opacity w-full">
                     <span class="material-symbols-outlined">logout</span>
                     <span class="text-label-md">Keluar</span>
-                </button>
-            </form>
+                </a>
+            
         </div>
     </aside>
 
@@ -157,9 +157,9 @@
                 <a href="/booking/" class="block px-3 py-2 text-sm font-medium rounded-lg bg-secondary-container text-on-secondary-container">Booking</a>
                 <a href="/booking/create/" class="block px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Sewa Baru</a>
                 <a href="/profil/" class="block px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Profil</a>
-                <form method="POST" action="/logout/">
-                    <input type="hidden" name="_token" value="mZjleF7x2yIseiP8KPcyTDoi8E3zluqzV68O1LlW" autocomplete="off">                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Keluar</button>
-                </form>
+                <a href="/login/">
+                                        <a class="block w-full text-left px-3 py-2 text-sm font-medium rounded-lg text-on-surface hover:bg-surface-container">Keluar</a>
+                
             </div>
         </div>
     </nav>
