@@ -235,7 +235,7 @@ class ExportDemoCommand extends Command
             return;
         }
 
-        $html = $this->rewriteHtml((string) $response->getBody(), $base);
+        $html = $this->rewriteHtml((string) $response->getBody(), $base, $path);
 
         $file = $this->outputFileFor($path, $output);
         File::ensureDirectoryExists(dirname($file));
@@ -257,7 +257,7 @@ class ExportDemoCommand extends Command
             : $output.'/'.$path.'/index.html';
     }
 
-    private function rewriteHtml(string $html, string $base): string
+    private function rewriteHtml(string $html, string $base, string $path = ''): string
     {
         $html = str_replace($base, '', $html);
 
@@ -265,7 +265,7 @@ class ExportDemoCommand extends Command
             $html = str_replace('href="'.$url.'"', 'href="/'.$staticPath.'/"', $html);
         }
 
-        return preg_replace_callback(
+        $html = preg_replace_callback(
             '/((?:href|action)=")(\/)([^"]*?)(\")/',
             function (array $m): string {
                 $path = $m[3];
@@ -279,6 +279,33 @@ class ExportDemoCommand extends Command
                 }
 
                 return $m[1].$m[2].$path.'/'.$m[4];
+            },
+            $html
+        );
+
+        // Pada halaman login statis, tombol quick-login tidak bisa POST.
+        // Ganti form menjadi link langsung ke dashboard per role.
+        if ($path === '/login') {
+            $html = $this->replaceDemoLoginForms($html);
+        }
+
+        return $html;
+    }
+
+    private function replaceDemoLoginForms(string $html): string
+    {
+        $roles = [
+            'admin' => ['/admin/', 'Admin', 'bg-primary text-on-primary hover:bg-primary-container'],
+            'staff' => ['/admin/', 'Staff', 'bg-tertiary text-on-tertiary hover:bg-tertiary-container'],
+            'customer' => ['/dashboard/', 'Customer', 'bg-secondary-container text-on-secondary-container hover:shadow-md'],
+        ];
+
+        return preg_replace_callback(
+            '/<form method="POST" action="\/demo\/login\/(admin|staff|customer)\/"\s*>.*?<\/form>/s',
+            function (array $m) use ($roles): string {
+                [$href, $label, $classes] = $roles[$m[1]];
+
+                return '<a href="'.$href.'" class="w-full block text-center py-2.5 px-3 rounded-lg '.$classes.' font-bold text-xs transition-all">'.$label.'</a>';
             },
             $html
         );

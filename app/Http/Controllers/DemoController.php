@@ -46,6 +46,6 @@ class DemoController extends Controller
 
         return $user->role->value === 'customer'
             ? redirect()->route('customer.dashboard')
-            : redirect()->route('dashboard');
+            : redirect()->route('admin.dashboard');
     }
 }
