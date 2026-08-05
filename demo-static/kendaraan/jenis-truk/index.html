@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="QBORxx8dwIDL5T9bIkNGrZpTuFeCCwilw2jiFAVb">
+    <title>Katalog Kendaraan — Solusi Rental Mobil Terpercaya</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=noto-serif:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>    <style>
+        :root {
+            --color-primary: #022448;
+            --color-on-primary: #ffffff;
+            --color-primary-container: #1e3a5f;
+            --color-on-primary-container: #8aa4cf;
+            --color-primary-fixed: #d5e3ff;
+            --color-primary-fixed-dim: #adc8f5;
+            --color-on-primary-fixed: #001c3b;
+            --color-on-primary-fixed-variant: #2d486d;
+            --color-primary-50: #eef4ff;
+            --color-primary-100: #dae6ff;
+            --color-primary-200: #bccdfe;
+            --color-primary-300: #8eabfc;
+            --color-primary-400: #5a83f5;
+            --color-primary-500: #305ee0;
+            --color-primary-600: #1a44c5;
+            --color-primary-700: #0a2b8a;
+            --color-primary-800: #022448;
+            --color-primary-900: #001c3b;
+            --color-primary-950: #000e1d;
+            --color-secondary: #855300;
+            --color-on-secondary: #ffffff;
+            --color-secondary-container: #fea619;
+            --color-on-secondary-container: #684000;
+            --color-secondary-fixed: #ffddb8;
+            --color-secondary-fixed-dim: #ffb95f;
+            --color-on-secondary-fixed: #2a1700;
+            --color-on-secondary-fixed-variant: #653e00;
+            --color-accent-50: #fffbeb;
+            --color-accent-100: #fef3c7;
+            --color-accent-200: #fde68a;
+            --color-accent-300: #fcd34d;
+            --color-accent-400: #fbbf24;
+            --color-accent-500: #fea619;
+            --color-accent-600: #d97706;
+            --color-accent-700: #b45309;
+            --color-tertiary: #18233b;
+            --color-on-tertiary: #ffffff;
+            --color-tertiary-container: #2e3952;
+            --color-on-tertiary-container: #98a3c0;
+            --color-tertiary-fixed: #d8e2ff;
+            --color-tertiary-fixed-dim: #bbc6e5;
+            --color-background: #f7f9fb;
+            --color-on-background: #191c1e;
+            --color-surface: #f7f9fb;
+            --color-on-surface: #191c1e;
+            --color-surface-dim: #d8dadc;
+            --color-surface-bright: #f7f9fb;
+            --color-surface-container-lowest: #ffffff;
+            --color-surface-container-low: #f2f4f6;
+            --color-surface-container: #eceef0;
+            --color-surface-container-high: #e6e8ea;
+            --color-surface-container-highest: #e0e3e5;
+            --color-surface-variant: #e0e3e5;
+            --color-on-surface-variant: #43474e;
+            --color-outline: #74777f;
+            --color-outline-variant: #c4c6cf;
+            --color-inverse-surface: #2d3133;
+            --color-inverse-on-surface: #eff1f3;
+            --color-inverse-primary: #adc8f5;
+            --color-surface-tint: #455f87;
+            --color-surface-subtle: #eff6ff;
+            --color-status-success: #22c55e;
+            --color-status-warning: #f59e0b;
+            --color-status-danger: #ef4444;
+            --color-status-info: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-sans antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<div class="bg-accent text-on-secondary-fixed h-8 flex items-center justify-center px-4 z-[60] sticky top-0">
+    <p class="text-xs font-semibold tracking-wide flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l1.9 5.7H20l-4.9 3.6L17 17l-5-3.6L7 17l1.9-5.7L4 7.7h6.1L12 2z"/>
+        </svg>
+        Mode Demo — data contoh, bukan data asli
+    </p>
+</div>
+
+<nav class="sticky top-8 w-full z-50 bg-surface shadow-sm transition-all duration-300 ease-out h-20" id="main-nav">
+    <div class="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+        <div class="flex items-center gap-8">
+            <a href="" class="font-bold text-xl sm:text-2xl tracking-tighter text-primary">
+                Oto<span class="text-secondary-container">Rent</span>
+            </a>
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Beranda</a>
+                <a href="/kendaraan/" class="font-body-md text-body-md text-primary font-bold border-b-2 border-secondary-container transition-colors duration-200">Kendaraan</a>
+                <a href="/layanan/" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Layanan</a>
+                <a href="/kontak/" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Kontak</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-2 gap-2">
+                <span class="material-symbols-outlined text-outline">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-sm w-32 outline-none text-on-surface placeholder:text-outline" placeholder="Cari mobil..." type="text">
+            </div>
+            <button class="material-symbols-outlined p-2 text-surface hover:bg-surface-container rounded-full transition-all hidden sm:block">notifications</button>
+                            <a href="/login/" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container hover:shadow-md transition-all hidden sm:block">Masuk</a>
+                <a href="/register/" class="text-sm font-medium text-on-surface hover:text-primary transition-colors hidden sm:block">Daftar</a>
+                        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-surface hover:bg-surface-container">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-outline-variant/30 shadow-lg">
+    <div class="px-4 py-4 space-y-1 max-w-[1280px] mx-auto">
+        <a href="" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Beranda</a>
+        <a href="/kendaraan/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md bg-secondary-container/10 text-primary font-bold transition-colors">Kendaraan</a>
+        <a href="/layanan/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Layanan</a>
+        <a href="/kontak/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Kontak</a>
+        <div class="border-t border-outline-variant/20 pt-3 mt-3 space-y-1">
+                            <a href="/login/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md bg-primary text-on-primary text-center hover:bg-primary-container transition-colors">Masuk</a>
+                <a href="/register/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Daftar</a>
+                    </div>
+    </div>
+</div>
+
+<main>
+    <style>
+    .active-tab {
+        position: relative;
+    }
+    .active-tab::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 3px;
+        background-color: var(--color-secondary-container);
+        border-radius: 99px;
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .stagger-card {
+        opacity: 0;
+        animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes pulse-soft {
+        0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+    .pulse-soft {
+        animation: pulse-soft 2s infinite;
+    }
+    .icon-box:hover .material-symbols-outlined {
+        transform: scale(1.1) translateY(-2px);
+        color: var(--color-secondary-container);
+        font-variation-settings: 'FILL' 1;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<main class="pt-0 pb-20 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <section class="py-16">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+            <div class="max-w-2xl">
+                <h1 class="text-display-hero text-display-hero text-primary mb-6 tracking-tight">Katalog Kendaraan</h1>
+                <p class="text-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-xl font-light">Eksplorasi koleksi kendaraan premium kami yang dikurasi khusus untuk kenyamanan dan performa terbaik di setiap perjalanan Anda.</p>
+            </div>
+            <form method="GET" action="/kendaraan/" class="relative w-full lg:w-[450px]">
+                <input name="search" value="" class="w-full pl-14 pr-6 py-5 rounded-2xl border-none bg-surface-container-high/50 backdrop-blur shadow-inner focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-on-surface placeholder-outline text-body-md" placeholder="Cari tipe, merk, atau kategori..." type="text">
+                <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            </form>
+        </div>
+    </section>
+
+    
+    <nav class="sticky top-20 z-40 bg-background/80 backdrop-blur-xl py-6 border-b border-surface-variant/20 mb-16 shadow-xl shadow-black/[0.02]">
+        <div class="flex items-center space-x-4 md:space-x-10 overflow-x-auto no-scrollbar">
+            <a href="/kendaraan/jenis-semua/"
+               class="whitespace-nowrap px-4 py-1 text-label-md text-on-surface-variant hover:text-primary transition-all">Semua</a>
+                        <a href="/kendaraan/jenis-sedan/"
+               class="whitespace-nowrap px-4 py-1 text-label-md text-on-surface-variant hover:text-primary transition-colors">Sedan</a>
+                        <a href="/kendaraan/jenis-suv/"
+               class="whitespace-nowrap px-4 py-1 text-label-md text-on-surface-variant hover:text-primary transition-colors">SUV</a>
+                        <a href="/kendaraan/jenis-mpv/"
+               class="whitespace-nowrap px-4 py-1 text-label-md text-on-surface-variant hover:text-primary transition-colors">MPV</a>
+                        <a href="/kendaraan/jenis-minibus/"
+               class="whitespace-nowrap px-4 py-1 text-label-md text-on-surface-variant hover:text-primary transition-colors">Minibus</a>
+                        <a href="/kendaraan/jenis-truk/"
+               class="whitespace-nowrap px-4 py-1 text-label-md active-tab text-primary transition-colors">Truk</a>
+                        <div class="flex-grow"></div>
+            <div class="flex items-center space-x-3 border-l border-surface-variant/30 pl-10 hidden lg:flex">
+                <span class="text-on-surface-variant/60 text-caption-caps text-caption-caps uppercase tracking-widest">Urutkan</span>
+                <select name="sort" onchange="this.form.submit()" form="sort-form"
+                    class="bg-transparent border-none focus:ring-0 text-label-md text-primary cursor-pointer hover:text-secondary-container transition-colors">
+                    <option value="terbaru" selected>Terbaru</option>
+                    <option value="harga_terendah" >Harga Terendah</option>
+                    <option value="harga_tertinggi" >Harga Tertinggi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    
+    <form id="sort-form" method="GET" action="/kendaraan/">
+                        <input type="hidden" name="jenis" value="truk">
+            </form>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6">
+                <div class="stagger-card group relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 flex flex-col" style="animation-delay: 0.1s">
+            <div class="aspect-[4/3] relative overflow-hidden">
+                                <img src="/storage/uploads/kendaraan/kendaraan/l300.jpg" alt="Mitsubishi L300" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute top-5 left-5">
+                                        <span class="bg-status-warning/10 backdrop-blur-md text-status-warning border-status-warning/20 px-4 py-1.5 rounded-full text-caption-caps text-caption-caps border">Disewa</span>
+                </div>
+                <div class="absolute top-5 right-5 bg-primary/80 backdrop-blur-md text-on-primary px-4 py-1.5 rounded-xl text-label-md shadow-lg">
+                    Rp 500.000<span class="text-[10px] font-light opacity-80 uppercase tracking-widest ml-1">/hari</span>
+                </div>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="mb-6">
+                    <h3 class="text-headline-md text-primary mb-2 tracking-tight group-hover:text-secondary transition-colors">Mitsubishi L300</h3>
+                    <p class="text-body-md text-on-surface-variant/70 font-light">Truk 2021</p>
+                </div>
+                <div class="grid grid-cols-3 gap-3 mb-10">
+                    <div class="icon-box flex flex-col items-center p-3 bg-surface-container-low/50 rounded-xl transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary mb-2">airline_seat_recline_extra</span>
+                        <span class="text-caption-caps text-[10px] text-on-surface-variant/80 uppercase tracking-tighter">3 Kursi</span>
+                    </div>
+                    <div class="icon-box flex flex-col items-center p-3 bg-surface-container-low/50 rounded-xl transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary mb-2">directions_car</span>
+                        <span class="text-caption-caps text-[10px] text-on-surface-variant/80 uppercase tracking-tighter">Putih</span>
+                    </div>
+                    <div class="icon-box flex flex-col items-center p-3 bg-surface-container-low/50 rounded-xl transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary mb-2">calendar_today</span>
+                        <span class="text-caption-caps text-[10px] text-on-surface-variant/80 uppercase tracking-tighter">2021</span>
+                    </div>
+                </div>
+                <a href="/kendaraan/9/"
+                   class="mt-auto w-full bg-secondary-container text-on-secondary-container py-4 rounded-xl text-label-md font-bold hover:shadow-xl hover:brightness-105 active:scale-[0.98] transition-all duration-300 text-center block">
+                    Lihat Detail
+                </a>
+            </div>
+        </div>
+            </div>
+
+    
+    </main>
+</main>
+
+<footer class="w-full py-16 px-4 sm:px-6 lg:px-8 mt-auto bg-primary text-on-primary">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto">
+        <div class="space-y-6">
+            <span class="font-headline-md text-headline-md text-on-primary font-black tracking-tighter">OtoRent</span>
+            <p class="text-on-primary/70 font-body-md text-body-md pr-4">
+                Penyedia layanan sewa mobil premium nomor satu di Indonesia. Mewah, terpercaya, dan profesional.
+            </p>
+            <div class="flex gap-4">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="/layanan/">
+                    <span class="material-symbols-outlined text-[20px]">public</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="https://wa.me/6281234567890" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="/kontak/">
+                    <span class="material-symbols-outlined text-[20px]">mail</span>
+                </a>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Layanan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Harian</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Bulanan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Layanan Chauffeur</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Korporat</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Perusahaan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                <li><a class="hover:text-secondary-container transition-colors" href="/kendaraan/">Tentang Kami</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Lokasi</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Karir</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Blog</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Berlangganan</h5>
+            <p class="text-on-primary/70 text-sm">Dapatkan penawaran eksklusif langsung di email Anda.</p>
+            <div class="flex flex-col gap-3">
+                <input class="bg-white/10 border-white/20 rounded-xl px-4 py-3 focus:ring-secondary-container outline-none placeholder:text-white/30 text-white" placeholder="Email Anda" type="email">
+                <button class="bg-secondary-container text-on-secondary-fixed py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">Daftar Sekarang</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-[1280px] mx-auto pt-16 mt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-on-primary/50 text-sm">&copy; 2026 OtoRent. All rights reserved.</p>
+        <div class="flex gap-8 text-sm text-on-primary/50">
+            <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+            <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+            <a class="hover:text-white transition-colors" href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            nav.classList.add('h-16', 'shadow-md');
+            nav.classList.remove('h-20', 'shadow-sm');
+        } else {
+            nav.classList.add('h-20', 'shadow-sm');
+            nav.classList.remove('h-16', 'shadow-md');
+        }
+    });
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+</script>
+</body>
+</html>

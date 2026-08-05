@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="QBORxx8dwIDL5T9bIkNGrZpTuFeCCwilw2jiFAVb">
+    <title>OtoRent — Sewa Mobil Mewah &amp; Premium — Solusi Rental Mobil Terpercaya</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=noto-serif:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" /><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>    <style>
+        :root {
+            --color-primary: #022448;
+            --color-on-primary: #ffffff;
+            --color-primary-container: #1e3a5f;
+            --color-on-primary-container: #8aa4cf;
+            --color-primary-fixed: #d5e3ff;
+            --color-primary-fixed-dim: #adc8f5;
+            --color-on-primary-fixed: #001c3b;
+            --color-on-primary-fixed-variant: #2d486d;
+            --color-primary-50: #eef4ff;
+            --color-primary-100: #dae6ff;
+            --color-primary-200: #bccdfe;
+            --color-primary-300: #8eabfc;
+            --color-primary-400: #5a83f5;
+            --color-primary-500: #305ee0;
+            --color-primary-600: #1a44c5;
+            --color-primary-700: #0a2b8a;
+            --color-primary-800: #022448;
+            --color-primary-900: #001c3b;
+            --color-primary-950: #000e1d;
+            --color-secondary: #855300;
+            --color-on-secondary: #ffffff;
+            --color-secondary-container: #fea619;
+            --color-on-secondary-container: #684000;
+            --color-secondary-fixed: #ffddb8;
+            --color-secondary-fixed-dim: #ffb95f;
+            --color-on-secondary-fixed: #2a1700;
+            --color-on-secondary-fixed-variant: #653e00;
+            --color-accent-50: #fffbeb;
+            --color-accent-100: #fef3c7;
+            --color-accent-200: #fde68a;
+            --color-accent-300: #fcd34d;
+            --color-accent-400: #fbbf24;
+            --color-accent-500: #fea619;
+            --color-accent-600: #d97706;
+            --color-accent-700: #b45309;
+            --color-tertiary: #18233b;
+            --color-on-tertiary: #ffffff;
+            --color-tertiary-container: #2e3952;
+            --color-on-tertiary-container: #98a3c0;
+            --color-tertiary-fixed: #d8e2ff;
+            --color-tertiary-fixed-dim: #bbc6e5;
+            --color-background: #f7f9fb;
+            --color-on-background: #191c1e;
+            --color-surface: #f7f9fb;
+            --color-on-surface: #191c1e;
+            --color-surface-dim: #d8dadc;
+            --color-surface-bright: #f7f9fb;
+            --color-surface-container-lowest: #ffffff;
+            --color-surface-container-low: #f2f4f6;
+            --color-surface-container: #eceef0;
+            --color-surface-container-high: #e6e8ea;
+            --color-surface-container-highest: #e0e3e5;
+            --color-surface-variant: #e0e3e5;
+            --color-on-surface-variant: #43474e;
+            --color-outline: #74777f;
+            --color-outline-variant: #c4c6cf;
+            --color-inverse-surface: #2d3133;
+            --color-inverse-on-surface: #eff1f3;
+            --color-inverse-primary: #adc8f5;
+            --color-surface-tint: #455f87;
+            --color-surface-subtle: #eff6ff;
+            --color-status-success: #22c55e;
+            --color-status-warning: #f59e0b;
+            --color-status-danger: #ef4444;
+            --color-status-info: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-sans antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<div class="bg-accent text-on-secondary-fixed h-8 flex items-center justify-center px-4 z-[60] sticky top-0">
+    <p class="text-xs font-semibold tracking-wide flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l1.9 5.7H20l-4.9 3.6L17 17l-5-3.6L7 17l1.9-5.7L4 7.7h6.1L12 2z"/>
+        </svg>
+        Mode Demo — data contoh, bukan data asli
+    </p>
+</div>
+
+<nav class="sticky top-8 w-full z-50 bg-surface shadow-sm transition-all duration-300 ease-out h-20" id="main-nav">
+    <div class="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+        <div class="flex items-center gap-8">
+            <a href="" class="font-bold text-xl sm:text-2xl tracking-tighter text-primary">
+                Oto<span class="text-secondary-container">Rent</span>
+            </a>
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="" class="font-body-md text-body-md text-primary font-bold border-b-2 border-secondary-container transition-colors duration-200">Beranda</a>
+                <a href="/kendaraan/" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Kendaraan</a>
+                <a href="/layanan/" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Layanan</a>
+                <a href="/kontak/" class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors duration-200">Kontak</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-2 gap-2">
+                <span class="material-symbols-outlined text-outline">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-sm w-32 outline-none text-on-surface placeholder:text-outline" placeholder="Cari mobil..." type="text">
+            </div>
+            <button class="material-symbols-outlined p-2 text-surface hover:bg-surface-container rounded-full transition-all hidden sm:block">notifications</button>
+                            <a href="/login/" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container hover:shadow-md transition-all hidden sm:block">Masuk</a>
+                <a href="/register/" class="text-sm font-medium text-on-surface hover:text-primary transition-colors hidden sm:block">Daftar</a>
+                        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md text-surface hover:bg-surface-container">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-outline-variant/30 shadow-lg">
+    <div class="px-4 py-4 space-y-1 max-w-[1280px] mx-auto">
+        <a href="" class="block px-3 py-2.5 rounded-md font-body-md text-body-md bg-secondary-container/10 text-primary font-bold transition-colors">Beranda</a>
+        <a href="/kendaraan/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Kendaraan</a>
+        <a href="/layanan/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Layanan</a>
+        <a href="/kontak/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Kontak</a>
+        <div class="border-t border-outline-variant/20 pt-3 mt-3 space-y-1">
+                            <a href="/login/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md bg-primary text-on-primary text-center hover:bg-primary-container transition-colors">Masuk</a>
+                <a href="/register/" class="block px-3 py-2.5 rounded-md font-body-md text-body-md text-on-surface hover:bg-surface-container transition-colors">Daftar</a>
+                    </div>
+    </div>
+</div>
+
+<main>
+    <style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+    }
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0) scale(1.05); }
+        50% { transform: translateY(-20px) scale(1.05); }
+    }
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    .btn-interact {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-interact:active {
+        transform: scale(0.95);
+    }
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+</style>
+
+
+<header class="relative h-screen flex items-center overflow-hidden bg-primary pt-0">
+    
+    <div class="absolute inset-0 z-0">
+        <canvas class="w-full h-full" id="hero-shader-d8fa133c4aef51b7c1dd0907bd65daed"></canvas>
+
+<script>
+(function() {
+    const canvas = document.getElementById('hero-shader-d8fa133c4aef51b7c1dd0907bd65daed');
+    if (!canvas) return;
+
+    function syncSize() {
+        const w = canvas.clientWidth || 1280;
+        const h = canvas.clientHeight || 720;
+        if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+        }
+    }
+    if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(syncSize).observe(canvas);
+    }
+    syncSize();
+
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return;
+
+    const vertexShaderSrc = `
+        attribute vec2 a_position;
+        varying vec2 v_texCoord;
+        void main() {
+            v_texCoord = a_position * 0.5 + 0.5;
+            gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+    `;
+
+    const fragmentShaderSrc = `
+        precision highp float;
+        uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform vec2 u_mouse;
+        varying vec2 v_texCoord;
+        void main() {
+            vec2 uv = v_texCoord;
+            float time = u_time * 0.4;
+            vec2 p = -1.0 + 2.0 * uv;
+            p.x *= u_resolution.x / u_resolution.y;
+            float wave = sin(p.x * 2.0 + time) * cos(p.y * 2.0 + time * 0.5);
+            wave += sin(p.y * 3.0 - time * 0.8) * cos(p.x * 1.5 + time * 0.3);
+            vec2 mouse = u_mouse / u_resolution;
+            wave += sin((p.x + mouse.x) * 2.5 + time * 0.6) * cos((p.y + mouse.y) * 2.5 + time * 0.4) * 0.3;
+            vec3 color1 = vec3(0.118, 0.227, 0.373);
+            vec3 color2 = vec3(0.043, 0.114, 0.231);
+            vec3 accent = vec3(0.961, 0.620, 0.043);
+            float mixFactor = clamp(wave * 0.5 + 0.5, 0.0, 1.0);
+            vec3 finalColor = mix(color1, color2, mixFactor);
+            float highlight = pow(mixFactor, 10.0) * 0.15;
+            finalColor += accent * highlight;
+            gl_FragColor = vec4(finalColor, 1.0);
+        }
+    `;
+
+    function createShader(gl, type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        return shader;
+    }
+
+    const program = gl.createProgram();
+    gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vertexShaderSrc));
+    gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+    const positionLocation = gl.getAttribLocation(program, 'a_position');
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+    const timeLoc = gl.getUniformLocation(program, 'u_time');
+    const resLoc = gl.getUniformLocation(program, 'u_resolution');
+    const mouseLoc = gl.getUniformLocation(program, 'u_mouse');
+
+    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+    window.addEventListener('mousemove', function(event) {
+        var rect = canvas.getBoundingClientRect();
+        if (rect.width && rect.height) {
+            var nx = (event.clientX - rect.left) / rect.width;
+            var ny = 1.0 - (event.clientY - rect.top) / rect.height;
+            mouse.x = nx * canvas.width;
+            mouse.y = ny * canvas.height;
+        }
+    });
+
+    function render(time) {
+        if (typeof ResizeObserver === 'undefined') syncSize();
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform1f(timeLoc, time * 0.001);
+        gl.uniform2f(resLoc, canvas.width, canvas.height);
+        if (mouseLoc) gl.uniform2f(mouseLoc, mouse.x, mouse.y);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+})();
+</script>
+    </div>
+    <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 glass-card p-10 rounded-[2.5rem] lg:bg-transparent lg:backdrop-blur-0 lg:border-0 lg:p-0">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                <span class="w-2 h-2 rounded-full bg-status-success animate-ping"></span>
+                <span class="text-white font-caption-caps text-caption-caps uppercase tracking-widest">Temukan Kendaraan Anda</span>
+            </div>
+            <h1 class="text-white font-display-hero text-display-hero-mobile md:text-display-hero max-w-xl">
+                Definisi Baru <span class="text-secondary-container">Kemewahan</span> Dalam Berkendara.
+            </h1>
+            <p class="text-white/70 text-lg leading-relaxed max-w-lg">
+                Nikmati perjalanan tanpa kompromi dengan armada premium kami. Dari sedan eksekutif hingga supercar, OtoRent menghadirkan standar kenyamanan tertinggi di Indonesia.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                                <a href="/register/" class="px-8 py-4 bg-secondary-container text-on-secondary-fixed font-bold rounded-xl shadow-lg hover:shadow-secondary-container/20 hover:-translate-y-1 transition-all duration-300 btn-interact text-center">
+                    Pesan Sekarang
+                </a>
+                                <a href="/kendaraan/" class="px-8 py-4 bg-transparent border border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 group inline-flex items-center justify-center gap-2 btn-interact">
+                    Lihat Koleksi
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-8 pt-8">
+                <div>
+                    <div class="text-white font-headline-md text-headline-md">500+</div>
+                    <div class="text-white/50 text-xs uppercase tracking-tighter">Armada Mewah</div>
+                </div>
+                <div>
+                    <div class="text-white font-headline-md text-headline-md">15k+</div>
+                    <div class="text-white/50 text-xs uppercase tracking-tighter">Klien Puas</div>
+                </div>
+                <div>
+                    <div class="text-white font-headline-md text-headline-md">24/7</div>
+                    <div class="text-white/50 text-xs uppercase tracking-tighter">Layanan VIP</div>
+                </div>
+            </div>
+        </div>
+        <div class="relative group hidden lg:block">
+            <div class="absolute inset-0 bg-secondary-container/10 blur-[120px] rounded-full scale-75 -z-10 group-hover:scale-100 transition-transform duration-700"></div>
+            <img class="w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform animate-float transition-all duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrHuX5_alk-4iHKq-_UKqxdg5w_swqydEis_aiviE-QQHKM4BZhrG-OmJmENcHwcNP1enf025Hw5RFqHZFg_uWnrMQb-_gF3G2uG9RkdU6hjs_PY2V_fYmUYel-kcbpX_YGlqc-nIPg7_mw5O9GV4feUYTQhuQNOT66jzN81tCYFCN9z2dsrnaZvtDvEvKwxTy8RyBycjjKf-bkcOJ6tBrI-QZsC_ATEKxRqjtHN8xkSbTvEZe5X4H4w" alt="Luxury Sedan">
+        </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+        <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+            <div class="w-1 h-2 bg-white rounded-full animate-bounce"></div>
+        </div>
+    </div>
+</header>
+
+
+<section class="py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto bg-background">
+    <div class="text-center mb-16 reveal">
+        <span class="text-secondary font-caption-caps text-caption-caps uppercase tracking-widest block mb-4">Keunggulan Kami</span>
+        <h2 class="font-headline-lg text-headline-lg text-primary">Mengapa OtoRent?</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2 reveal">
+            <div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary mb-4">Asuransi All-Risk</h3>
+            <p class="text-on-surface-variant font-body-md text-body-md">Perjalanan tenang dengan perlindungan asuransi menyeluruh untuk setiap unit armada kami.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-primary text-white shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 100ms;">
+            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-secondary-container text-3xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-4">Armada Terbaru</h3>
+            <p class="text-white/70 font-body-md text-body-md">Kami hanya menyediakan mobil dengan usia di bawah 2 tahun untuk menjamin performa maksimal.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 200ms;">
+            <div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary mb-4">Antar-Jemput VIP</h3>
+            <p class="text-on-surface-variant font-body-md text-body-md">Layanan pengantaran unit langsung ke depan pintu rumah atau bandara di seluruh kota besar.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-24 bg-surface-container-low  overflow-hidden" id="fleet">
+    <div class="px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+            <div class="space-y-4">
+                <span class="text-secondary font-caption-caps text-caption-caps uppercase tracking-widest">Koleksi Terpilih</span>
+                <h2 class="font-headline-lg text-headline-lg text-primary">Temukan Kendaraan Impian Anda</h2>
+            </div>
+            <a href="/kendaraan/" class="text-sm font-medium text-primary hover:text-secondary-container transition-colors">Lihat Semua &rarr;</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="group bg-white  rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 0ms">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="absolute top-4 left-4 z-10">
+                                                <span class="bg-status-success text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tersedia</span>
+                    </div>
+                                            <img src="/storage/uploads/kendaraan/kendaraan/avanza.jpg" alt="Toyota Avanza 1.5 G" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <a href="/kendaraan/1/" class="w-full py-3 bg-white text-primary font-bold rounded-xl translate-y-4 group-hover:translate-y-0 transition-transform btn-interact text-center">Detail Kendaraan</a>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-primary">Toyota Avanza 1.5 G</h4>
+                            <p class="text-on-surface-variant text-sm">MPV</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-secondary font-bold text-xl">Rp 350.000</span>
+                            <span class="text-on-surface-variant text-xs block">/ hari</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 py-6 border-t border-surface-variant">
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">airline_seat_recline_extra</span>
+                            <span class="text-xs font-semibold">7 Kursi</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">settings_accessibility</span>
+                            <span class="text-xs font-semibold">Matic</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">local_gas_station</span>
+                            <span class="text-xs font-semibold">Bensin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="group bg-white  rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 100ms">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="absolute top-4 left-4 z-10">
+                                                <span class="bg-status-success text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tersedia</span>
+                    </div>
+                                            <img src="/storage/uploads/kendaraan/kendaraan/xenia.jpg" alt="Daihatsu Xenia 1.5 R" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <a href="/kendaraan/2/" class="w-full py-3 bg-white text-primary font-bold rounded-xl translate-y-4 group-hover:translate-y-0 transition-transform btn-interact text-center">Detail Kendaraan</a>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-primary">Daihatsu Xenia 1.5 R</h4>
+                            <p class="text-on-surface-variant text-sm">MPV</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-secondary font-bold text-xl">Rp 350.000</span>
+                            <span class="text-on-surface-variant text-xs block">/ hari</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 py-6 border-t border-surface-variant">
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">airline_seat_recline_extra</span>
+                            <span class="text-xs font-semibold">7 Kursi</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">settings_accessibility</span>
+                            <span class="text-xs font-semibold">Matic</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">local_gas_station</span>
+                            <span class="text-xs font-semibold">Bensin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="group bg-white  rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 200ms">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="absolute top-4 left-4 z-10">
+                                                <span class="bg-status-success text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tersedia</span>
+                    </div>
+                                            <img src="/storage/uploads/kendaraan/kendaraan/innova.jpg" alt="Toyota Innova Reborn 2.4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <a href="/kendaraan/3/" class="w-full py-3 bg-white text-primary font-bold rounded-xl translate-y-4 group-hover:translate-y-0 transition-transform btn-interact text-center">Detail Kendaraan</a>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-primary">Toyota Innova Reborn 2.4</h4>
+                            <p class="text-on-surface-variant text-sm">MPV</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-secondary font-bold text-xl">Rp 550.000</span>
+                            <span class="text-on-surface-variant text-xs block">/ hari</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 py-6 border-t border-surface-variant">
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">airline_seat_recline_extra</span>
+                            <span class="text-xs font-semibold">7 Kursi</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">settings_accessibility</span>
+                            <span class="text-xs font-semibold">Matic</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">local_gas_station</span>
+                            <span class="text-xs font-semibold">Bensin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="group bg-white  rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 300ms">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="absolute top-4 left-4 z-10">
+                                                <span class="bg-status-success text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tersedia</span>
+                    </div>
+                                            <img src="/storage/uploads/kendaraan/kendaraan/pajero.jpg" alt="Mitsubishi Pajero Sport Dakar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <a href="/kendaraan/4/" class="w-full py-3 bg-white text-primary font-bold rounded-xl translate-y-4 group-hover:translate-y-0 transition-transform btn-interact text-center">Detail Kendaraan</a>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-primary">Mitsubishi Pajero Sport Dakar</h4>
+                            <p class="text-on-surface-variant text-sm">SUV</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-secondary font-bold text-xl">Rp 800.000</span>
+                            <span class="text-on-surface-variant text-xs block">/ hari</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 py-6 border-t border-surface-variant">
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">airline_seat_recline_extra</span>
+                            <span class="text-xs font-semibold">7 Kursi</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">settings_accessibility</span>
+                            <span class="text-xs font-semibold">Matic</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[18px]">local_gas_station</span>
+                            <span class="text-xs font-semibold">Bensin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+    </div>
+</section>
+
+
+<section class="py-24 px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+            <span class="text-secondary font-caption-caps text-caption-caps uppercase tracking-widest block mb-4">Testimoni Klien</span>
+            <h2 class="font-headline-lg text-headline-lg text-primary mb-8">Apa Kata Mereka Tentang Layanan Kami?</h2>
+            <div class="space-y-8">
+                <div class="p-8 rounded-3xl bg-surface shadow-sm border border-outline-variant/20 italic text-on-surface-variant relative">
+                    <span class="material-symbols-outlined absolute -top-4 -left-2 text-6xl text-primary/5 select-none" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+                    "Layanan OtoRent benar-benar profesional. Saya memesan unit untuk keperluan bisnis di Jakarta dan mobil diantar tepat waktu dengan kondisi yang sangat bersih dan prima. Sangat direkomendasikan!"
+                    <div class="mt-6 flex items-center gap-4 not-italic">
+                        <div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+                            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMTliomFJ3D5MeoDsjkARusUwX6bi4cddJfL0DBSszFjfHxZtLSrPhmruwCqA7esmhu1jIFWbUay08eBUoiRCfNe0ew5CFHZpZTdEftebKIuoJ660OnOMNy0f_zBzgEbLhjBQe9SATMaEPg-bXrNwkSAqoKoTfV-ZPD2j7Ex0UvVbrtE6zPESFcv2Rl_zLlF8ZZcQ-QBNfDBxNsDTnW1mMzJ6DCAoZE6rRugWwetr2kpThdN_oz3jEtQ" alt="Budi Santoso">
+                        </div>
+                        <div>
+                            <div class="font-bold text-primary">Budi Santoso</div>
+                            <div class="text-xs text-on-surface-variant">CEO, Tech Global Indonesia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="relative reveal" style="transition-delay: 200ms;">
+            <div class="aspect-square rounded-[3rem] overflow-hidden">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiKV7U9p-lWLoug-iJk_-_VZuGtXpbbjsFWVrnVUFywTP4Xdpk5hu0XPCHT-IaIXABKTniy2wdTR229Iusynx-xY9YU1mg5QVybR5tPkI0m3yI8uI0VxPuKPuntmKcNX1FvJQ4KYZWNCE1VAYISduQQ9PODbZRLwYzmI47m_4jeBo8LF_RSQdfGt-qA_VynwaJze33mqROb2jV5vX-5VtTR8GksBu1fxn_Q7Bzw9fa33d_1TwjiPFgzg" alt="Luxury Interior">
+            </div>
+            <div class="absolute -bottom-8 -right-8 p-8 bg-white  rounded-3xl shadow-2xl max-w-xs border border-outline-variant/20 hidden sm:block">
+                <div class="flex items-center gap-1 text-status-warning mb-2">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="font-bold text-primary">Skor Kepuasan 4.9/5</p>
+                <p class="text-sm text-on-surface-variant">Berdasarkan lebih dari 5.000 ulasan terverifikasi klien kami.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Scroll Reveal Intersection Observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</main>
+
+<footer class="w-full py-16 px-4 sm:px-6 lg:px-8 mt-auto bg-primary text-on-primary">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto">
+        <div class="space-y-6">
+            <span class="font-headline-md text-headline-md text-on-primary font-black tracking-tighter">OtoRent</span>
+            <p class="text-on-primary/70 font-body-md text-body-md pr-4">
+                Penyedia layanan sewa mobil premium nomor satu di Indonesia. Mewah, terpercaya, dan profesional.
+            </p>
+            <div class="flex gap-4">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="/layanan/">
+                    <span class="material-symbols-outlined text-[20px]">public</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="https://wa.me/6281234567890" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-container transition-colors" href="/kontak/">
+                    <span class="material-symbols-outlined text-[20px]">mail</span>
+                </a>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Layanan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Harian</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Bulanan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Layanan Chauffeur</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/layanan/">Sewa Korporat</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Perusahaan</h5>
+            <ul class="space-y-3 text-on-primary/70">
+                <li><a class="hover:text-secondary-container transition-colors" href="/kendaraan/">Tentang Kami</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Lokasi</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Karir</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="/kontak/">Blog</a></li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h5 class="font-bold text-lg">Berlangganan</h5>
+            <p class="text-on-primary/70 text-sm">Dapatkan penawaran eksklusif langsung di email Anda.</p>
+            <div class="flex flex-col gap-3">
+                <input class="bg-white/10 border-white/20 rounded-xl px-4 py-3 focus:ring-secondary-container outline-none placeholder:text-white/30 text-white" placeholder="Email Anda" type="email">
+                <button class="bg-secondary-container text-on-secondary-fixed py-3 rounded-xl font-bold hover:opacity-90 transition-opacity">Daftar Sekarang</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-[1280px] mx-auto pt-16 mt-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-on-primary/50 text-sm">&copy; 2026 OtoRent. All rights reserved.</p>
+        <div class="flex gap-8 text-sm text-on-primary/50">
+            <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+            <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+            <a class="hover:text-white transition-colors" href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            nav.classList.add('h-16', 'shadow-md');
+            nav.classList.remove('h-20', 'shadow-sm');
+        } else {
+            nav.classList.add('h-20', 'shadow-sm');
+            nav.classList.remove('h-16', 'shadow-md');
+        }
+    });
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+</script>
+</body>
+</html>
