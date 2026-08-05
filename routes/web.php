@@ -4,6 +4,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Customer\DashboardController;
 use App\Http\Controllers\Customer\BookingController;
 use App\Http\Controllers\Customer\PembayaranController;
@@ -25,6 +26,12 @@ Route::get('/kontak', [PublicPageController::class, 'kontak'])->name('kontak');
 Route::post('/kontak', [PublicPageController::class, 'kontakStore'])->name('kontak.store');
 Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.index');
 Route::get('/kendaraan/{kendaraan}', [KendaraanController::class, 'show'])->name('kendaraan.show');
+
+// Demo routes (only active in demo mode)
+Route::get('/demo', [DemoController::class, 'index'])->name('demo.menu');
+Route::post('/demo/login/{role}', [DemoController::class, 'login'])
+    ->middleware('guest')
+    ->name('demo.login');
 
 // Profile routes (Breeze compatibility)
 Route::middleware(['auth'])->group(function () {

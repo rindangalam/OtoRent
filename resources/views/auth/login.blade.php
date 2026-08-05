@@ -8,6 +8,27 @@
     <p class="font-body-md text-body-md text-on-surface-variant">Silakan masuk untuk mengelola pesanan Anda.</p>
 </header>
 
+@if (\App\Providers\DemoServiceProvider::isDemoMode())
+    <div class="mb-8 rounded-xl border border-accent-300 bg-accent-100/60 p-4">
+        <p class="font-label-md text-label-md text-accent-700 mb-3">Mode Demo — masuk cepat sebagai:</p>
+        <div class="grid grid-cols-3 gap-2">
+            <form method="POST" action="{{ route('demo.login', 'admin') }}">
+                @csrf
+                <button class="w-full py-2.5 px-3 rounded-lg bg-primary text-on-primary font-bold text-xs hover:bg-primary-container hover:shadow-md transition-all" type="submit">Admin</button>
+            </form>
+            <form method="POST" action="{{ route('demo.login', 'staff') }}">
+                @csrf
+                <button class="w-full py-2.5 px-3 rounded-lg bg-tertiary text-on-tertiary font-bold text-xs hover:bg-tertiary-container hover:shadow-md transition-all" type="submit">Staff</button>
+            </form>
+            <form method="POST" action="{{ route('demo.login', 'customer') }}">
+                @csrf
+                <button class="w-full py-2.5 px-3 rounded-lg bg-secondary-container text-on-secondary-container font-bold text-xs hover:shadow-md transition-all" type="submit">Customer</button>
+            </form>
+        </div>
+        <p class="mt-3 text-xs text-on-surface-variant">Atau manual: <code class="font-mono">admin@otorent.com</code> / <code class="font-mono">andi@example.com</code> — sandi <code class="font-mono">password</code></p>
+    </div>
+@endif
+
 <div class="grid grid-cols-2 gap-4 mb-8">
     <button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors duration-200 group ">
         <svg class="w-5 h-5" viewBox="0 0 24 24">

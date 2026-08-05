@@ -92,6 +92,8 @@
     </style>
 </head>
 <body class="font-sans antialiased text-on-background bg-background min-h-screen">
+    <x-demo-banner />
+
     {{-- Sidebar (lg+) --}}
     <aside class="fixed left-0 top-0 h-full w-64 hidden lg:flex flex-col glass-panel shadow-lg p-6 space-y-4 z-40 border-r border-outline-variant/20">
         <div class="mb-6">

@@ -17,7 +17,9 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/demo
 /storage/pail
+/demo-static
 /vendor
 /AGENTS.md
 /docs

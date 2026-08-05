@@ -43,7 +43,7 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
 
-<main class="pt-24 pb-20 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<main class="{{ demo_mode() ? 'pt-0' : 'pt-24' }} pb-20 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
     {{-- Hero Search Section --}}
     <section class="py-16">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-12">

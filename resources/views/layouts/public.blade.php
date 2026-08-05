@@ -82,7 +82,9 @@
 </head>
 <body class="bg-background text-on-background font-sans antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
 
-<nav class="fixed top-0 w-full z-50 bg-surface shadow-sm transition-all duration-300 ease-out h-20" id="main-nav">
+<x-demo-banner sticky />
+
+<nav class="{{ demo_mode() ? 'sticky top-8' : 'fixed top-0' }} w-full z-50 bg-surface shadow-sm transition-all duration-300 ease-out h-20" id="main-nav">
     <div class="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
         <div class="flex items-center gap-8">
             <a href="{{ route('landing') }}" class="font-bold text-xl sm:text-2xl tracking-tighter text-primary">

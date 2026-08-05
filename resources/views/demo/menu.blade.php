@@ -1,0 +1,157 @@
+@php
+    $demoCustomer = \App\Models\User::where('email', 'andi@example.com')->first();
+    $demoBooking = $demoCustomer?->bookings()->first();
+@endphp
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OtoRent — Menu Demo</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        :root {
+            --color-primary: #022448;
+            --color-on-primary: #ffffff;
+            --color-primary-container: #1e3a5f;
+            --color-on-primary-container: #8aa4cf;
+            --color-primary-fixed: #d5e3ff;
+            --color-primary-fixed-dim: #adc8f5;
+            --color-on-primary-fixed: #001c3b;
+            --color-on-primary-fixed-variant: #2d486d;
+            --color-primary-50: #eef4ff;
+            --color-primary-100: #dae6ff;
+            --color-primary-200: #bccdfe;
+            --color-primary-300: #8eabfc;
+            --color-primary-400: #5a83f5;
+            --color-primary-500: #305ee0;
+            --color-primary-600: #1a44c5;
+            --color-primary-700: #0a2b8a;
+            --color-primary-800: #022448;
+            --color-primary-900: #001c3b;
+            --color-primary-950: #000e1d;
+            --color-secondary: #855300;
+            --color-on-secondary: #ffffff;
+            --color-secondary-container: #fea619;
+            --color-on-secondary-container: #684000;
+            --color-secondary-fixed: #ffddb8;
+            --color-secondary-fixed-dim: #ffb95f;
+            --color-on-secondary-fixed: #2a1700;
+            --color-on-secondary-fixed-variant: #653e00;
+            --color-accent-50: #fffbeb;
+            --color-accent-100: #fef3c7;
+            --color-accent-200: #fde68a;
+            --color-accent-300: #fcd34d;
+            --color-accent-400: #fbbf24;
+            --color-accent-500: #fea619;
+            --color-accent-600: #d97706;
+            --color-accent-700: #b45309;
+            --color-tertiary: #18233b;
+            --color-on-tertiary: #ffffff;
+            --color-tertiary-container: #2e3952;
+            --color-on-tertiary-container: #98a3c0;
+            --color-tertiary-fixed: #d8e2ff;
+            --color-tertiary-fixed-dim: #bbc6e5;
+            --color-background: #f7f9fb;
+            --color-on-background: #191c1e;
+            --color-surface: #f7f9fb;
+            --color-on-surface: #191c1e;
+            --color-surface-dim: #d8dadc;
+            --color-surface-bright: #f7f9fb;
+            --color-surface-container-lowest: #ffffff;
+            --color-surface-container-low: #f2f4f6;
+            --color-surface-container: #eceef0;
+            --color-surface-container-high: #e6e8ea;
+            --color-surface-container-highest: #e0e3e5;
+            --color-surface-variant: #e0e3e5;
+            --color-on-surface-variant: #43474e;
+            --color-outline: #74777f;
+            --color-outline-variant: #c4c6cf;
+            --color-inverse-surface: #2d3133;
+            --color-inverse-on-surface: #eff1f3;
+            --color-inverse-primary: #adc8f5;
+            --color-surface-tint: #455f87;
+            --color-surface-subtle: #eff6ff;
+            --color-status-success: #22c55e;
+            --color-status-warning: #f59e0b;
+            --color-status-danger: #ef4444;
+            --color-status-info: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-sans antialiased min-h-screen">
+
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+
+    <div class="text-center mb-10">
+        <h1 class="font-headline-lg text-headline-lg font-black text-primary tracking-tighter">Oto<span class="text-secondary-container">Rent</span></h1>
+        <p class="mt-2 text-on-surface-variant">Menu Demo — pilih tampilan yang ingin dilihat</p>
+        <div class="mt-3 inline-flex items-center gap-1.5 bg-accent-100 text-accent-700 border border-accent-300 rounded-full px-4 py-1.5 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
+            Mode Demo — data contoh, bukan data asli
+        </div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <a href="{{ route('landing') }}" class="group bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <p class="text-3xl mb-2">🌐</p>
+            <p class="font-bold text-on-surface group-hover:text-primary transition-colors">Landing Page</p>
+            <p class="text-xs text-on-surface-variant mt-1">Tampilan publik & katalog kendaraan</p>
+        </a>
+        <a href="{{ route('demo.menu') }}" class="group bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <p class="text-3xl mb-2">🔑</p>
+            <p class="font-bold text-on-surface group-hover:text-primary transition-colors">Login</p>
+            <p class="text-xs text-on-surface-variant mt-1">Halaman masuk & daftar</p>
+        </a>
+        <a href="{{ route('kendaraan.index') }}" class="group bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 text-center hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <p class="text-3xl mb-2">🚗</p>
+            <p class="font-bold text-on-surface group-hover:text-primary transition-colors">Katalog Kendaraan</p>
+            <p class="text-xs text-on-surface-variant mt-1">Daftar & detail armada</p>
+        </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-primary text-on-primary rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-bold text-lg">Admin & Staff</h2>
+                <span class="text-xs bg-white/15 rounded-full px-3 py-1">role: admin, staff</span>
+            </div>
+            <a href="{{ route('admin.dashboard') }}" class="block bg-secondary-container text-on-secondary-container font-bold text-center rounded-xl py-3 mb-4 hover:opacity-90 transition-opacity">Dashboard Admin</a>
+            <ul class="space-y-1 text-sm text-on-primary/80">
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.kendaraan.index') }}">Kelola Kendaraan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.driver.index') }}">Kelola Driver</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.jadwal.index') }}">Jadwal</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.booking.index') }}">Booking</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.pembayaran.index') }}">Pembayaran</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.service.index') }}">Service Kendaraan</a></li>
+                <li><a class="hover:text-secondary-container transition-colors" href="{{ route('admin.laporan.index') }}">Laporan</a></li>
+            </ul>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-bold text-on-surface">Customer</h2>
+                <span class="text-xs bg-accent-100 text-accent-700 rounded-full px-3 py-1">role: customer</span>
+            </div>
+            <a href="{{ route('customer.dashboard') }}" class="block bg-secondary-container text-on-secondary-container font-bold text-center rounded-xl py-3 mb-4 hover:opacity-90 transition-opacity">Dashboard Customer</a>
+            <ul class="space-y-1 text-sm text-on-surface-variant">
+                <li><a class="hover:text-primary transition-colors" href="{{ route('booking.index') }}">Daftar Booking</a></li>
+                <li><a class="hover:text-primary transition-colors" href="{{ route('booking.create') }}">Buat Booking Baru</a></li>
+                @if ($demoBooking)
+                    <li><a class="hover:text-primary transition-colors" href="{{ route('pembayaran.create', $demoBooking) }}">Pembayaran</a></li>
+                @endif
+                <li><a class="hover:text-primary transition-colors" href="{{ route('profil.edit') }}">Profil</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center mt-10">
+        <p class="text-xs text-outline">
+            Demo statis — halaman hanya tampilan. Untuk demo interaktif, jalankan aplikasi secara lokal.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

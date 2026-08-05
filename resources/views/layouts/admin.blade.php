@@ -94,6 +94,8 @@
 </head>
 <body class="font-sans antialiased bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
 
+<x-demo-banner />
+
 <div x-data="{ sidebarOpen: false }" class="min-h-screen flex">
 
     <div x-show="sidebarOpen" x-transition:enter="transition-opacity ease-linear duration-300"

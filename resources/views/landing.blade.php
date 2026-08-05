@@ -36,7 +36,7 @@
 </style>
 
 {{-- Hero Section --}}
-<header class="relative h-screen flex items-center overflow-hidden bg-primary pt-20">
+<header class="relative h-screen flex items-center overflow-hidden bg-primary {{ demo_mode() ? 'pt-0' : 'pt-20' }}">
     {{-- WebGL Background --}}
     <div class="absolute inset-0 z-0">
         <x-webgl-shader color1="0.118, 0.227, 0.373" color2="0.043, 0.114, 0.231" accent="0.961, 0.620, 0.043" />

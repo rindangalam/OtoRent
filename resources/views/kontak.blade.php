@@ -17,7 +17,7 @@
 </style>
 
 {{-- Hero --}}
-<section class="relative bg-primary overflow-hidden pt-20">
+<section class="relative bg-primary overflow-hidden {{ demo_mode() ? 'pt-0' : 'pt-20' }}">
     <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-[-20%] left-[-10%] w-80 h-80 bg-primary-500/20 rounded-full blur-3xl"></div>
     <div class="relative z-10 px-4 sm:px-6 lg:px-8 py-24 lg:py-32 max-w-[1280px] mx-auto text-center">
