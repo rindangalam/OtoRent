@@ -39,6 +39,7 @@ class DemoServiceProvider extends ServiceProvider
 
     public static function isDemoMode(): bool
     {
-        return filter_var(env('APP_DEMO', true), FILTER_VALIDATE_BOOL);
+        return ! app()->environment('testing')
+            && filter_var(env('APP_DEMO', true), FILTER_VALIDATE_BOOL);
     }
 }
