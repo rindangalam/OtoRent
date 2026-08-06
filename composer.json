@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "otorent/otorent",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Sistem manajemen rental mobil berbasis Laravel",
+    "keywords": ["laravel", "rental-mobil", "car-rental", "management"],
     "license": "MIT",
     "require": {
         "php": "^8.2",

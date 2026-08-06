@@ -1,59 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://github.com/rindangalam/OtoRent">
+        <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8.2">
+        <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square&logo=laravel&logoColor=white" alt="Laravel 12">
+        <img src="https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 3">
+        <img src="https://img.shields.io/badge/SQLite-Default-003B57?style=flat-square&logo=sqlite&logoColor=white" alt="SQLite">
+        <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
+    </a>
 </p>
 
-## About Laravel
+# OtoRent 🚗
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**OtoRent** adalah sistem manajemen rental mobil berbasis web yang dibangun dengan **Laravel 12**. Aplikasi ini menangani seluruh alur bisnis rental kendaraan — dari katalog kendaraan, pemesanan (booking), pembayaran, hingga manajemen armada, driver, dan jadwal — dengan tiga peran pengguna: **Admin**, **Staff**, dan **Customer**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏠 Publik
+- Landing page dengan hero animasi WebGL
+- Katalog kendaraan dengan filter jenis (SUV, MPV, Sedan, dll.) dan sortir harga
+- Halaman detail kendaraan
+- Halaman layanan & kontak (form kontak)
 
-## Learning Laravel
+### 👤 Customer
+- Dashboard ringkasan
+- Pemesanan kendaraan (buat, riwayat, detail booking)
+- Pembayaran booking
+- Pengelolaan profil
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🛠️ Admin & Staff
+- Dashboard ringkasan bisnis
+- Manajemen kendaraan (CRUD)
+- Manajemen driver (CRUD)
+- Penjadwalan kendaraan
+- Pengelolaan booking & pembaruan status
+- Verifikasi / penolakan pembayaran
+- Riwayat service kendaraan
+- Laporan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🧰 Teknologi
 
-## Laravel Sponsors
+| Lapisan | Teknologi |
+|---|---|
+| Backend | PHP 8.2+, Laravel 12 |
+| Frontend | Blade, Tailwind CSS 3, Alpine.js, Vite |
+| Database | SQLite (default) / MySQL |
+| Queue & Cache | Database driver (default) |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 Persyaratan
 
-### Premium Partners
+- PHP >= 8.2
+- Composer
+- Node.js & npm (untuk asset frontend)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🚀 Instalasi
 
-## Contributing
+```bash
+# 1. Clone repositori
+git clone https://github.com/rindangalam/OtoRent.git
+cd OtoRent
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 2. Install dependency PHP
+composer install
 
-## Code of Conduct
+# 3. Siapkan environment
+copy .env.example .env        # Windows
+# cp .env.example .env        # Linux / macOS
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 4. Generate key aplikasi
+php artisan key:generate
 
-## Security Vulnerabilities
+# 5. Buat database SQLite
+#    (buat file database/database.sqlite jika menggunakan SQLite)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 6. Hubungkan storage
+php artisan storage:link
 
-## License
+# 7. Jalankan migrasi + seeder
+php artisan migrate --seed
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 8. Install & build asset frontend
+npm install
+npm run build
+```
+
+> **Alternatif cepat:** `composer run setup` menjalankan langkah 2–8 otomatis (kecuali migrate dengan seeder — jalankan `php artisan migrate --seed` setelahnya).
+
+## 👥 Akun Demo
+
+Seeder menghasilkan data contoh beserta akun berikut (password: `password`):
+
+| Role | Email |
+|---|---|
+| Admin | `admin@otorent.com` |
+| Staff | `staff@otorent.com` |
+| Customer | `andi@example.com` |
+
+## ▶️ Menjalankan Aplikasi (Pengembangan)
+
+Jalankan server, queue worker, dan Vite sekaligus:
+
+```bash
+composer run dev
+```
+
+Atau secara manual:
+
+```bash
+php artisan serve          # Server (http://localhost:8000)
+php artisan queue:listen   # Queue worker
+npm run dev                # Vite dev server
+```
+
+## 🧪 Testing
+
+```bash
+composer run test
+# atau
+php artisan test
+```
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
