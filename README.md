@@ -1,4 +1,4 @@
-# OtoRent 🚗
+# OtoRent 
 
 > **Modern car rental management system built with Laravel 12**  
 > Complete business workflow from vehicle catalog, booking, payment, to fleet management with multi-role access control.
@@ -11,7 +11,7 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 **OtoRent** is a comprehensive web-based car rental management system built with **Laravel 12**. It handles the entire rental business workflow — from vehicle catalog, bookings, payments, to fleet management, driver scheduling, and service history — with three user roles: **Admin**, **Staff**, and **Customer**.
 
@@ -24,21 +24,21 @@
 
 ---
 
-## ✨ Features
+## Features
 
-### 🏠 Public Pages
+### Public Pages
 - Landing page with WebGL hero animation
 - Vehicle catalog with filtering (SUV, MPV, Sedan, etc.) and price sorting
 - Detailed vehicle information pages
 - Services & contact page with contact form
 
-### 👤 Customer Portal
+### Customer Portal
 - Dashboard with booking summary
 - Vehicle booking (create, history, details)
 - Payment processing
 - Profile management
 
-### 🛠️ Admin & Staff Dashboard
+### Admin & Staff Dashboard
 - Business overview dashboard
 - **Vehicle Management** (CRUD operations)
 - **Driver Management** (CRUD operations)
@@ -62,7 +62,7 @@
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 - **PHP** >= 8.2
 - **Composer**
@@ -70,7 +70,7 @@
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Quick Setup
 
@@ -119,7 +119,7 @@ npm run build
 
 ---
 
-## 👥 Demo Accounts
+## Demo Accounts
 
 After running seeders, use these demo accounts (password: `password`):
 
@@ -131,7 +131,7 @@ After running seeders, use these demo accounts (password: `password`):
 
 ---
 
-## ▶️ Running the Application
+## Running the Application
 
 ### Development Mode (All-in-One)
 
@@ -161,35 +161,35 @@ Open browser at: `http://localhost:8000`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 OtoRent/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/     # Application controllers
-│   │   └── Middleware/      # Custom middleware
-│   ├── Models/              # Eloquent models
-│   └── Providers/           # Service providers
-├── database/
-│   ├── factories/           # Model factories
-│   ├── migrations/          # Database migrations
-│   └── seeders/             # Database seeders
-├── resources/
-│   ├── views/               # Blade templates
-│   ├── css/                 # Stylesheets
-│   └── js/                  # JavaScript files
-├── routes/
-│   ├── web.php              # Web routes
-│   └── api.php              # API routes
-├── public/                  # Public assets
-├── storage/                 # Logs, cache, uploads
-└── tests/                   # PHPUnit tests
+ app/
+    Http/
+       Controllers/     # Application controllers
+       Middleware/      # Custom middleware
+    Models/              # Eloquent models
+    Providers/           # Service providers
+ database/
+    factories/           # Model factories
+    migrations/          # Database migrations
+    seeders/             # Database seeders
+ resources/
+    views/               # Blade templates
+    css/                 # Stylesheets
+    js/                  # JavaScript files
+ routes/
+    web.php              # Web routes
+    api.php              # API routes
+ public/                  # Public assets
+ storage/                 # Logs, cache, uploads
+ tests/                   # PHPUnit tests
 ```
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Key Tables
 - `users` - User accounts (Admin, Staff, Customer)
@@ -217,7 +217,7 @@ php artisan test --filter=BookingTest
 
 ---
 
-## 🔐 Security Features
+## Security Features
 
 - **Role-based access control** with middleware
 - **CSRF protection** on all forms
@@ -228,7 +228,7 @@ php artisan test --filter=BookingTest
 
 ---
 
-## 📊 Business Workflow
+## Business Workflow
 
 ### Customer Booking Flow
 1. Customer browses vehicle catalog
@@ -248,7 +248,7 @@ php artisan test --filter=BookingTest
 
 ---
 
-## 🎨 UI/UX Features
+## UI/UX Features
 
 - **Responsive design** (mobile, tablet, desktop)
 - **WebGL hero animation** on landing page
@@ -259,7 +259,7 @@ php artisan test --filter=BookingTest
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### Production Build
 
@@ -283,7 +283,7 @@ php artisan view:cache
 
 ---
 
-## 🛠️ Development Commands
+## Development Commands
 
 ```bash
 composer run dev       # Start dev server with queue & Vite
@@ -294,7 +294,7 @@ composer run logs      # Tail application logs with Pail
 
 ---
 
-## 📝 API Endpoints (Optional)
+## API Endpoints (Optional)
 
 The application is primarily web-based, but you can extend it with API endpoints in `routes/api.php` for:
 - Mobile app integration
@@ -314,20 +314,20 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 👤 Author
+## Author
 
 **Rindang Alam Nur Muhammad**  
 GitHub: [@rindangalam](https://github.com/rindangalam)
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 Built with:
 - [Laravel](https://laravel.com/) - PHP web framework
@@ -337,6 +337,6 @@ Built with:
 
 ---
 
-## 📧 Support
+## Support
 
 For issues or questions, please open an issue on [GitHub Issues](https://github.com/rindangalam/OtoRent/issues).
