@@ -1,123 +1,342 @@
-<p align="center">
-    <a href="https://github.com/rindangalam/OtoRent">
-        <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8.2">
-        <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square&logo=laravel&logoColor=white" alt="Laravel 12">
-        <img src="https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 3">
-        <img src="https://img.shields.io/badge/SQLite-Default-003B57?style=flat-square&logo=sqlite&logoColor=white" alt="SQLite">
-        <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
-    </a>
-</p>
-
 # OtoRent 🚗
 
-**OtoRent** adalah sistem manajemen rental mobil berbasis web yang dibangun dengan **Laravel 12**. Aplikasi ini menangani seluruh alur bisnis rental kendaraan — dari katalog kendaraan, pemesanan (booking), pembayaran, hingga manajemen armada, driver, dan jadwal — dengan tiga peran pengguna: **Admin**, **Staff**, dan **Customer**.
+> **Modern car rental management system built with Laravel 12**  
+> Complete business workflow from vehicle catalog, booking, payment, to fleet management with multi-role access control.
 
-## ✨ Fitur
+[![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
+[![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-Default-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-### 🏠 Publik
-- Landing page dengan hero animasi WebGL
-- Katalog kendaraan dengan filter jenis (SUV, MPV, Sedan, dll.) dan sortir harga
-- Halaman detail kendaraan
-- Halaman layanan & kontak (form kontak)
+---
 
-### 👤 Customer
-- Dashboard ringkasan
-- Pemesanan kendaraan (buat, riwayat, detail booking)
-- Pembayaran booking
-- Pengelolaan profil
+## 📋 Overview
 
-### 🛠️ Admin & Staff
-- Dashboard ringkasan bisnis
-- Manajemen kendaraan (CRUD)
-- Manajemen driver (CRUD)
-- Penjadwalan kendaraan
-- Pengelolaan booking & pembaruan status
-- Verifikasi / penolakan pembayaran
-- Riwayat service kendaraan
-- Laporan
+**OtoRent** is a comprehensive web-based car rental management system built with **Laravel 12**. It handles the entire rental business workflow — from vehicle catalog, bookings, payments, to fleet management, driver scheduling, and service history — with three user roles: **Admin**, **Staff**, and **Customer**.
 
-## 🧰 Teknologi
+### Key Features
+- Complete rental workflow automation
+- Multi-role access control (Admin, Staff, Customer)
+- Real-time booking and payment management
+- Vehicle scheduling and driver assignment
+- Service history tracking
 
-| Lapisan | Teknologi |
-|---|---|
-| Backend | PHP 8.2+, Laravel 12 |
-| Frontend | Blade, Tailwind CSS 3, Alpine.js, Vite |
-| Database | SQLite (default) / MySQL |
-| Queue & Cache | Database driver (default) |
+---
 
-## 📋 Persyaratan
+## ✨ Features
 
-- PHP >= 8.2
-- Composer
-- Node.js & npm (untuk asset frontend)
+### 🏠 Public Pages
+- Landing page with WebGL hero animation
+- Vehicle catalog with filtering (SUV, MPV, Sedan, etc.) and price sorting
+- Detailed vehicle information pages
+- Services & contact page with contact form
 
-## 🚀 Instalasi
+### 👤 Customer Portal
+- Dashboard with booking summary
+- Vehicle booking (create, history, details)
+- Payment processing
+- Profile management
+
+### 🛠️ Admin & Staff Dashboard
+- Business overview dashboard
+- **Vehicle Management** (CRUD operations)
+- **Driver Management** (CRUD operations)
+- **Scheduling** (vehicle assignment)
+- **Booking Management** (view, update status)
+- **Payment Verification** (approve/reject)
+- **Service History** tracking
+- **Reports** generation
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Backend** | PHP 8.2+, Laravel 12 |
+| **Frontend** | Blade Templates, Tailwind CSS 3, Alpine.js, Vite |
+| **Database** | SQLite (default) / MySQL |
+| **Queue & Cache** | Database driver (default) |
+| **Authentication** | Laravel Breeze |
+
+---
+
+## 📋 Requirements
+
+- **PHP** >= 8.2
+- **Composer**
+- **Node.js** & npm (for frontend assets)
+
+---
+
+## 🚀 Installation
+
+### Quick Setup
 
 ```bash
-# 1. Clone repositori
+# 1. Clone repository
 git clone https://github.com/rindangalam/OtoRent.git
 cd OtoRent
 
-# 2. Install dependency PHP
+# 2. Run automated setup (installs dependencies, generates key, links storage, builds assets)
+composer run setup
+
+# 3. Run migrations with demo data
+php artisan migrate --seed
+```
+
+### Manual Setup
+
+```bash
+# 1. Clone repository
+git clone https://github.com/rindangalam/OtoRent.git
+cd OtoRent
+
+# 2. Install PHP dependencies
 composer install
 
-# 3. Siapkan environment
+# 3. Setup environment
 copy .env.example .env        # Windows
 # cp .env.example .env        # Linux / macOS
 
-# 4. Generate key aplikasi
+# 4. Generate application key
 php artisan key:generate
 
-# 5. Buat database SQLite
-#    (buat file database/database.sqlite jika menggunakan SQLite)
+# 5. Create SQLite database (if using SQLite)
+# Create file: database/database.sqlite
 
-# 6. Hubungkan storage
+# 6. Link storage
 php artisan storage:link
 
-# 7. Jalankan migrasi + seeder
+# 7. Run migrations with seeders
 php artisan migrate --seed
 
-# 8. Install & build asset frontend
+# 8. Install & build frontend assets
 npm install
 npm run build
 ```
 
-> **Alternatif cepat:** `composer run setup` menjalankan langkah 2–8 otomatis (kecuali migrate dengan seeder — jalankan `php artisan migrate --seed` setelahnya).
+---
 
-## 👥 Akun Demo
+## 👥 Demo Accounts
 
-Seeder menghasilkan data contoh beserta akun berikut (password: `password`):
+After running seeders, use these demo accounts (password: `password`):
 
-| Role | Email |
-|---|---|
-| Admin | `admin@otorent.com` |
-| Staff | `staff@otorent.com` |
-| Customer | `andi@example.com` |
+| Role | Email | Access Level |
+|------|-------|--------------|
+| **Admin** | `admin@otorent.com` | Full system access |
+| **Staff** | `staff@otorent.com` | Operations management |
+| **Customer** | `andi@example.com` | Booking & payments |
 
-## ▶️ Menjalankan Aplikasi (Pengembangan)
+---
 
-Jalankan server, queue worker, dan Vite sekaligus:
+## ▶️ Running the Application
+
+### Development Mode (All-in-One)
 
 ```bash
 composer run dev
 ```
 
-Atau secara manual:
+This command concurrently runs:
+- Laravel development server (`http://localhost:8000`)
+- Queue worker (background jobs)
+- Vite dev server (hot module replacement)
+
+### Manual Mode
 
 ```bash
-php artisan serve          # Server (http://localhost:8000)
-php artisan queue:listen   # Queue worker
-npm run dev                # Vite dev server
+# Terminal 1: Laravel server
+php artisan serve
+
+# Terminal 2: Queue worker
+php artisan queue:listen
+
+# Terminal 3: Vite dev server
+npm run dev
 ```
+
+Open browser at: `http://localhost:8000`
+
+---
+
+## 📁 Project Structure
+
+```
+OtoRent/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/     # Application controllers
+│   │   └── Middleware/      # Custom middleware
+│   ├── Models/              # Eloquent models
+│   └── Providers/           # Service providers
+├── database/
+│   ├── factories/           # Model factories
+│   ├── migrations/          # Database migrations
+│   └── seeders/             # Database seeders
+├── resources/
+│   ├── views/               # Blade templates
+│   ├── css/                 # Stylesheets
+│   └── js/                  # JavaScript files
+├── routes/
+│   ├── web.php              # Web routes
+│   └── api.php              # API routes
+├── public/                  # Public assets
+├── storage/                 # Logs, cache, uploads
+└── tests/                   # PHPUnit tests
+```
+
+---
+
+## 🗄️ Database Schema
+
+### Key Tables
+- `users` - User accounts (Admin, Staff, Customer)
+- `vehicles` - Vehicle master data
+- `drivers` - Driver information
+- `bookings` - Rental bookings
+- `payments` - Payment transactions
+- `schedules` - Vehicle scheduling
+- `services` - Vehicle service history
+
+---
 
 ## 🧪 Testing
 
 ```bash
+# Run all tests
 composer run test
-# atau
+
+# Or directly
 php artisan test
+
+# Run specific test
+php artisan test --filter=BookingTest
 ```
 
-## 📄 Lisensi
+---
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+## 🔐 Security Features
+
+- **Role-based access control** with middleware
+- **CSRF protection** on all forms
+- **Password hashing** with bcrypt
+- **SQL injection prevention** via Eloquent ORM
+- **XSS protection** with Blade escaping
+- **Secure file uploads** with validation
+
+---
+
+## 📊 Business Workflow
+
+### Customer Booking Flow
+1. Customer browses vehicle catalog
+2. Selects vehicle and date range
+3. Creates booking (pending status)
+4. Makes payment
+5. Admin/Staff verifies payment
+6. Booking confirmed → Vehicle assigned
+
+### Admin Management Flow
+1. Manages vehicle fleet (add, edit, deactivate)
+2. Assigns drivers to bookings
+3. Verifies customer payments
+4. Updates booking status (confirmed, ongoing, completed)
+5. Records vehicle service history
+6. Generates business reports
+
+---
+
+## 🎨 UI/UX Features
+
+- **Responsive design** (mobile, tablet, desktop)
+- **WebGL hero animation** on landing page
+- **Real-time search & filtering**
+- **Toast notifications** for user feedback
+- **Loading states** on async operations
+- **Dark mode ready** (Tailwind CSS)
+
+---
+
+## 🚀 Deployment
+
+### Production Build
+
+```bash
+# Build frontend assets
+npm run build
+
+# Optimize Laravel
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Set environment to production
+# Edit .env: APP_ENV=production, APP_DEBUG=false
+```
+
+### Recommended Hosting
+- **Shared Hosting**: Use SQLite database
+- **VPS/Cloud**: MySQL/PostgreSQL + Redis for cache
+- **Platform-as-Service**: Laravel Forge, Ploi, Heroku
+
+---
+
+## 🛠️ Development Commands
+
+```bash
+composer run dev       # Start dev server with queue & Vite
+composer run setup     # Automated setup (install, key, storage link, build)
+composer run test      # Run PHPUnit tests
+composer run logs      # Tail application logs with Pail
+```
+
+---
+
+## 📝 API Endpoints (Optional)
+
+The application is primarily web-based, but you can extend it with API endpoints in `routes/api.php` for:
+- Mobile app integration
+- Third-party integrations
+- Webhook handlers
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+**Rindang Alam Nur Muhammad**  
+GitHub: [@rindangalam](https://github.com/rindangalam)
+
+---
+
+## 🙏 Acknowledgments
+
+Built with:
+- [Laravel](https://laravel.com/) - PHP web framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Alpine.js](https://alpinejs.dev/) - Lightweight JavaScript framework
+- [Vite](https://vitejs.dev/) - Next generation frontend tooling
+
+---
+
+## 📧 Support
+
+For issues or questions, please open an issue on [GitHub Issues](https://github.com/rindangalam/OtoRent/issues).
